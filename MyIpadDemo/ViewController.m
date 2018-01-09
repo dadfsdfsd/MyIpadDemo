@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "FirstViewController.h"
+#import "CustomCollectionViewController.h"
 
 @interface ViewController ()
 
@@ -16,7 +18,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 50, 50)];
+    [button addTarget:self action:@selector(onTapButton) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    button.backgroundColor = [UIColor redColor];
+}
+
+- (void)onTapButton {
+    UIViewController *vc = [CustomCollectionViewController new];
+//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:vc animated:true completion:nil];
 }
 
 

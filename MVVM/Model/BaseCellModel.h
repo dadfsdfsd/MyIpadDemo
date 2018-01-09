@@ -1,0 +1,30 @@
+//
+//  BaseCellModel.h
+//  MyIpadDemo
+//
+//  Created by yangfan on 2018/1/5.
+//  Copyright © 2018年 yangfan. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <IGListKit/IGListKit.h>
+
+@interface BaseCellModel : NSObject<IGListDiffable>
+
+@property (nonatomic, assign, readonly) CGSize cachedSize;
+
++ (NSString *)cellIdentifier;
+
+//need override
+- (CGSize)calculateSizeForContainerSize:(CGSize) containerSize;
+
+- (CGSize)expectedSizeForContainerSize:(CGSize) containerSize;
+
+
+@end
+
+
+
+
+

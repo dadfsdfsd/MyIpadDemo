@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C1D7165200349CD00F42FFC /* CustomCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D7164200349CD00F42FFC /* CustomCollectionViewController.m */; };
+		3C1D716820034A0F00F42FFC /* CustomViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D716720034A0F00F42FFC /* CustomViewModel.m */; };
+		3C1D716B20034E7600F42FFC /* CustomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D716A20034E7600F42FFC /* CustomData.m */; };
+		3C1D716E2003598300F42FFC /* CustomCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D716D2003598300F42FFC /* CustomCellModel.m */; };
+		3C1D7171200359BC00F42FFC /* BaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D7170200359BC00F42FFC /* BaseCollectionViewCell.m */; };
+		3C1D717420035FDA00F42FFC /* CustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D717320035FDA00F42FFC /* CustomCollectionViewCell.m */; };
 		3C4AD08A1FFC87D700871172 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4AD0891FFC87D700871172 /* AppDelegate.m */; };
 		3C4AD08D1FFC87D700871172 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4AD08C1FFC87D700871172 /* ViewController.m */; };
 		3C4AD0901FFC87D700871172 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C4AD08E1FFC87D700871172 /* Main.storyboard */; };
@@ -15,6 +21,17 @@
 		3C4AD0981FFC87D700871172 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4AD0971FFC87D700871172 /* main.m */; };
 		3C4AD0A21FFC87D700871172 /* MyIpadDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4AD0A11FFC87D700871172 /* MyIpadDemoTests.m */; };
 		3C4AD0AD1FFC87D700871172 /* MyIpadDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4AD0AC1FFC87D700871172 /* MyIpadDemoUITests.m */; };
+		3C4AD0C31FFCC36D00871172 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4AD0C21FFCC36D00871172 /* FirstViewController.m */; };
+		3C4AD0C61FFCC64600871172 /* ColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4AD0C51FFCC64600871172 /* ColorViewController.m */; };
+		3C4AD0C91FFCC88900871172 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4AD0C81FFCC88900871172 /* SelectViewController.m */; };
+		3C4AD0CC1FFCCC7C00871172 /* SelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4AD0CB1FFCCC7C00871172 /* SelectTableViewCell.m */; };
+		3C70F67F20030EA700D2082B /* BaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70F67A20030EA700D2082B /* BaseCellModel.m */; };
+		3C70F68020030EA700D2082B /* BaseDataCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70F67C20030EA700D2082B /* BaseDataCellModel.m */; };
+		3C70F68120030EA700D2082B /* BaseSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70F67E20030EA700D2082B /* BaseSectionModel.m */; };
+		3C70F68420030EF200D2082B /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70F68220030EF200D2082B /* BaseViewModel.m */; };
+		3C70F68720030FAB00D2082B /* BaseSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70F68620030FAB00D2082B /* BaseSectionController.m */; };
+		3CD3E8BC1FFF6B39008E1621 /* BaseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD3E8BB1FFF6B39008E1621 /* BaseCollectionViewController.m */; };
+		F6AAEF93A417A3277891FC04 /* libPods-MyIpadDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6921DED9B2291E34E7B5B570 /* libPods-MyIpadDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +52,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14076A8510D31E4F25413082 /* Pods-MyIpadDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyIpadDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyIpadDemo/Pods-MyIpadDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		3C1D7163200349CD00F42FFC /* CustomCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewController.h; sourceTree = "<group>"; };
+		3C1D7164200349CD00F42FFC /* CustomCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewController.m; sourceTree = "<group>"; };
+		3C1D716620034A0F00F42FFC /* CustomViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomViewModel.h; sourceTree = "<group>"; };
+		3C1D716720034A0F00F42FFC /* CustomViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomViewModel.m; sourceTree = "<group>"; };
+		3C1D716920034E7600F42FFC /* CustomData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomData.h; sourceTree = "<group>"; };
+		3C1D716A20034E7600F42FFC /* CustomData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomData.m; sourceTree = "<group>"; };
+		3C1D716C2003598300F42FFC /* CustomCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCellModel.h; sourceTree = "<group>"; };
+		3C1D716D2003598300F42FFC /* CustomCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCellModel.m; sourceTree = "<group>"; };
+		3C1D716F200359BC00F42FFC /* BaseCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewCell.h; sourceTree = "<group>"; };
+		3C1D7170200359BC00F42FFC /* BaseCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewCell.m; sourceTree = "<group>"; };
+		3C1D717220035FDA00F42FFC /* CustomCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewCell.h; sourceTree = "<group>"; };
+		3C1D717320035FDA00F42FFC /* CustomCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewCell.m; sourceTree = "<group>"; };
 		3C4AD0851FFC87D700871172 /* MyIpadDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyIpadDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C4AD0881FFC87D700871172 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3C4AD0891FFC87D700871172 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,6 +81,28 @@
 		3C4AD0A81FFC87D700871172 /* MyIpadDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyIpadDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C4AD0AC1FFC87D700871172 /* MyIpadDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyIpadDemoUITests.m; sourceTree = "<group>"; };
 		3C4AD0AE1FFC87D700871172 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C4AD0C11FFCC36D00871172 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		3C4AD0C21FFCC36D00871172 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		3C4AD0C41FFCC64600871172 /* ColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorViewController.h; sourceTree = "<group>"; };
+		3C4AD0C51FFCC64600871172 /* ColorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorViewController.m; sourceTree = "<group>"; };
+		3C4AD0C71FFCC88900871172 /* SelectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
+		3C4AD0C81FFCC88900871172 /* SelectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
+		3C4AD0CA1FFCCC7C00871172 /* SelectTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectTableViewCell.h; sourceTree = "<group>"; };
+		3C4AD0CB1FFCCC7C00871172 /* SelectTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectTableViewCell.m; sourceTree = "<group>"; };
+		3C70F67920030EA700D2082B /* BaseCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCellModel.h; sourceTree = "<group>"; };
+		3C70F67A20030EA700D2082B /* BaseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCellModel.m; sourceTree = "<group>"; };
+		3C70F67B20030EA700D2082B /* BaseDataCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDataCellModel.h; sourceTree = "<group>"; };
+		3C70F67C20030EA700D2082B /* BaseDataCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDataCellModel.m; sourceTree = "<group>"; };
+		3C70F67D20030EA700D2082B /* BaseSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSectionModel.h; sourceTree = "<group>"; };
+		3C70F67E20030EA700D2082B /* BaseSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSectionModel.m; sourceTree = "<group>"; };
+		3C70F68220030EF200D2082B /* BaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
+		3C70F68320030EF200D2082B /* BaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
+		3C70F68520030FAB00D2082B /* BaseSectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseSectionController.h; sourceTree = "<group>"; };
+		3C70F68620030FAB00D2082B /* BaseSectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseSectionController.m; sourceTree = "<group>"; };
+		3CD3E8BA1FFF6B39008E1621 /* BaseCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewController.h; sourceTree = "<group>"; };
+		3CD3E8BB1FFF6B39008E1621 /* BaseCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewController.m; sourceTree = "<group>"; };
+		6921DED9B2291E34E7B5B570 /* libPods-MyIpadDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyIpadDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		70967790C97B44E3A02332AE /* Pods-MyIpadDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyIpadDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyIpadDemo/Pods-MyIpadDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6AAEF93A417A3277891FC04 /* libPods-MyIpadDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,13 +131,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C1D71622003499200F42FFC /* MVVMTest */ = {
+			isa = PBXGroup;
+			children = (
+				3C1D717220035FDA00F42FFC /* CustomCollectionViewCell.h */,
+				3C1D717320035FDA00F42FFC /* CustomCollectionViewCell.m */,
+				3C1D716C2003598300F42FFC /* CustomCellModel.h */,
+				3C1D716D2003598300F42FFC /* CustomCellModel.m */,
+				3C1D716920034E7600F42FFC /* CustomData.h */,
+				3C1D716A20034E7600F42FFC /* CustomData.m */,
+				3C1D716620034A0F00F42FFC /* CustomViewModel.h */,
+				3C1D716720034A0F00F42FFC /* CustomViewModel.m */,
+				3C1D7163200349CD00F42FFC /* CustomCollectionViewController.h */,
+				3C1D7164200349CD00F42FFC /* CustomCollectionViewController.m */,
+			);
+			path = MVVMTest;
+			sourceTree = "<group>";
+		};
 		3C4AD07C1FFC87D700871172 = {
 			isa = PBXGroup;
 			children = (
+				3C4AD0CD1FFCCCB700871172 /* MVVM */,
 				3C4AD0871FFC87D700871172 /* MyIpadDemo */,
 				3C4AD0A01FFC87D700871172 /* MyIpadDemoTests */,
 				3C4AD0AB1FFC87D700871172 /* MyIpadDemoUITests */,
 				3C4AD0861FFC87D700871172 /* Products */,
+				FA65008B49CAF14540D9FAD3 /* Pods */,
+				40256A3FC739CA95A7F5E387 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +174,15 @@
 		3C4AD0871FFC87D700871172 /* MyIpadDemo */ = {
 			isa = PBXGroup;
 			children = (
+				3C1D71622003499200F42FFC /* MVVMTest */,
+				3C4AD0CA1FFCCC7C00871172 /* SelectTableViewCell.h */,
+				3C4AD0CB1FFCCC7C00871172 /* SelectTableViewCell.m */,
+				3C4AD0C71FFCC88900871172 /* SelectViewController.h */,
+				3C4AD0C81FFCC88900871172 /* SelectViewController.m */,
+				3C4AD0C41FFCC64600871172 /* ColorViewController.h */,
+				3C4AD0C51FFCC64600871172 /* ColorViewController.m */,
+				3C4AD0C11FFCC36D00871172 /* FirstViewController.h */,
+				3C4AD0C21FFCC36D00871172 /* FirstViewController.m */,
 				3C4AD0881FFC87D700871172 /* AppDelegate.h */,
 				3C4AD0891FFC87D700871172 /* AppDelegate.m */,
 				3C4AD08B1FFC87D700871172 /* ViewController.h */,
@@ -132,6 +214,52 @@
 			path = MyIpadDemoUITests;
 			sourceTree = "<group>";
 		};
+		3C4AD0CD1FFCCCB700871172 /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				3C70F68320030EF200D2082B /* BaseViewModel.h */,
+				3C70F68220030EF200D2082B /* BaseViewModel.m */,
+				3C1D716F200359BC00F42FFC /* BaseCollectionViewCell.h */,
+				3C1D7170200359BC00F42FFC /* BaseCollectionViewCell.m */,
+				3CD3E8BA1FFF6B39008E1621 /* BaseCollectionViewController.h */,
+				3CD3E8BB1FFF6B39008E1621 /* BaseCollectionViewController.m */,
+				3C70F68520030FAB00D2082B /* BaseSectionController.h */,
+				3C70F68620030FAB00D2082B /* BaseSectionController.m */,
+				3C70F67820030EA700D2082B /* Model */,
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
+		3C70F67820030EA700D2082B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3C70F67920030EA700D2082B /* BaseCellModel.h */,
+				3C70F67A20030EA700D2082B /* BaseCellModel.m */,
+				3C70F67B20030EA700D2082B /* BaseDataCellModel.h */,
+				3C70F67C20030EA700D2082B /* BaseDataCellModel.m */,
+				3C70F67D20030EA700D2082B /* BaseSectionModel.h */,
+				3C70F67E20030EA700D2082B /* BaseSectionModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		40256A3FC739CA95A7F5E387 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6921DED9B2291E34E7B5B570 /* libPods-MyIpadDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA65008B49CAF14540D9FAD3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				14076A8510D31E4F25413082 /* Pods-MyIpadDemo.debug.xcconfig */,
+				70967790C97B44E3A02332AE /* Pods-MyIpadDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,9 +267,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C4AD0B11FFC87D700871172 /* Build configuration list for PBXNativeTarget "MyIpadDemo" */;
 			buildPhases = (
+				AAC9D9B029FAD0E806636935 /* [CP] Check Pods Manifest.lock */,
 				3C4AD0811FFC87D700871172 /* Sources */,
 				3C4AD0821FFC87D700871172 /* Frameworks */,
 				3C4AD0831FFC87D700871172 /* Resources */,
+				FE24D768077E3B44F1791872 /* [CP] Embed Pods Frameworks */,
+				431A59A273B49C672D5E7045 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -260,14 +391,81 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		431A59A273B49C672D5E7045 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyIpadDemo/Pods-MyIpadDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AAC9D9B029FAD0E806636935 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyIpadDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE24D768077E3B44F1791872 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyIpadDemo/Pods-MyIpadDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3C4AD0811FFC87D700871172 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C1D7165200349CD00F42FFC /* CustomCollectionViewController.m in Sources */,
+				3C1D7171200359BC00F42FFC /* BaseCollectionViewCell.m in Sources */,
+				3C1D717420035FDA00F42FFC /* CustomCollectionViewCell.m in Sources */,
+				3C4AD0C91FFCC88900871172 /* SelectViewController.m in Sources */,
+				3C70F68420030EF200D2082B /* BaseViewModel.m in Sources */,
 				3C4AD08D1FFC87D700871172 /* ViewController.m in Sources */,
+				3C4AD0C61FFCC64600871172 /* ColorViewController.m in Sources */,
+				3C70F68720030FAB00D2082B /* BaseSectionController.m in Sources */,
+				3C1D716E2003598300F42FFC /* CustomCellModel.m in Sources */,
+				3C70F68020030EA700D2082B /* BaseDataCellModel.m in Sources */,
 				3C4AD0981FFC87D700871172 /* main.m in Sources */,
 				3C4AD08A1FFC87D700871172 /* AppDelegate.m in Sources */,
+				3C4AD0C31FFCC36D00871172 /* FirstViewController.m in Sources */,
+				3C1D716820034A0F00F42FFC /* CustomViewModel.m in Sources */,
+				3C4AD0CC1FFCCC7C00871172 /* SelectTableViewCell.m in Sources */,
+				3C1D716B20034E7600F42FFC /* CustomData.m in Sources */,
+				3C70F68120030EA700D2082B /* BaseSectionModel.m in Sources */,
+				3C70F67F20030EA700D2082B /* BaseCellModel.m in Sources */,
+				3CD3E8BC1FFF6B39008E1621 /* BaseCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,8 +626,10 @@
 		};
 		3C4AD0B21FFC87D700871172 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14076A8510D31E4F25413082 /* Pods-MyIpadDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyIpadDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -441,8 +641,10 @@
 		};
 		3C4AD0B31FFC87D700871172 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70967790C97B44E3A02332AE /* Pods-MyIpadDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyIpadDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
