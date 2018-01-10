@@ -5,15 +5,18 @@ PODS:
     - IGListKit/Diffing
   - IGListKit/Diffing (3.1.1)
   - KVOController (1.2.0)
+  - MJRefresh (3.1.15.1)
 
 DEPENDENCIES:
   - IGListKit (~> 3.0)
   - KVOController
+  - MJRefresh
 
 SPEC CHECKSUMS:
   IGListKit: cb97f405ae43e59fe1da74271e19427ec20d3c07
   KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
+  MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
 
-PODFILE CHECKSUM: bedd46ede2614f09d138a159370ef54d15232f31
+PODFILE CHECKSUM: f7b5e649cf0a34d5e92b911e68e5ecf3a77d9076
 
 COCOAPODS: 1.3.1

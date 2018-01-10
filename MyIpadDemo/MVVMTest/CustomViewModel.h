@@ -10,6 +10,4 @@
 
 @interface CustomViewModel : BaseViewModel
 
-- (void)update;
-
 @end

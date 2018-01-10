@@ -11,12 +11,12 @@
 
 @implementation BaseViewModel {
     
-    BOOL isDataInitialized;
+    BOOL _isDataInitialized;
     
 }
 
 - (void)didBindViewController {
-    if (!isDataInitialized) {
+    if (!_isDataInitialized) {
         [self loadData];
     }
     else {
@@ -29,20 +29,34 @@
 }
 
 - (void)loadData {
-    _isLoading = true;
-    [self update];
-}
-
-- (void)update {
     
 }
 
-- (void)refresh {
-    
+- (void)markState:(ViewModelState)state completion:(void(^)(void))completion{
+    if (state != _state) {
+        _state = state;
+        if (completion != nil) {
+            completion();
+        }
+    }
+}
+ 
+- (void)updateWithCompletion:(void(^)(BOOL))completion {
+    [self markState:ViewModelStateUpdating completion:^{
+        self.state = ViewModelStateIdle;
+    }];
 }
 
-- (void)loadMore {
-    
+- (void)refreshWithCompletion:(void(^)(BOOL))completion {
+    [self markState:ViewModelStateRefreshing completion:^{
+        self.state = ViewModelStateIdle;
+    }];
+}
+
+- (void)loadMoreWithCompletion:(void(^)(BOOL))completion {
+    [self markState:ViewModelStateLoadingMore completion:^{
+        self.state = ViewModelStateIdle;
+    }];
 }
 
 - (void)reload:(BOOL)aniamted {
@@ -62,7 +76,7 @@
 }
 
 - (void)performUpdatesAnimated:(BOOL)animated completion:(IGListUpdaterCompletion)completion {
-    [_delegate performUpdatesAnimated:animated completion:completion];
+    [_delegate reload:animated completion:completion];
 }
 
 @end

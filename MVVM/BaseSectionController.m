@@ -70,12 +70,10 @@
     if ([self.object isKindOfClass:[BaseSectionModel class]]) {
         BaseSectionModel *sectionModel = (BaseSectionModel *)self.object;
         if (elementKind == UICollectionElementKindSectionHeader && sectionModel.headerCell != nil) {
-            BaseCellModel *headerCell = sectionModel.headerCell;
-            return [headerCell expectedSizeForContainerSize:self.collectionContext.containerSize];
+            return [sectionModel.headerCell expectedSizeForContainerSize:self.collectionContext.containerSize];
         }
         else if (elementKind == UICollectionElementKindSectionFooter && sectionModel.footerCell != nil) {
-            BaseCellModel *footerCell = sectionModel.footerCell;
-            return [footerCell expectedSizeForContainerSize:self.collectionContext.containerSize];
+            return [sectionModel.footerCell expectedSizeForContainerSize:self.collectionContext.containerSize];
         }
     }
     return CGSizeZero;
@@ -99,7 +97,18 @@
 }
 
 - (NSArray<NSString *> *)supportedElementKinds {
-    return @[UICollectionElementKindSectionHeader, UICollectionElementKindSectionFooter];
+    if ([self.object isKindOfClass:[BaseSectionModel class]]) {
+        NSMutableArray<NSString *> *supportedElementKinds = [NSMutableArray<NSString *> new];
+        BaseSectionModel *sectionModel = (BaseSectionModel *)self.object;
+        if (sectionModel.headerCell != nil) {
+            [supportedElementKinds addObject:UICollectionElementKindSectionHeader];
+        }
+        if (sectionModel.footerCell != nil) {
+            [supportedElementKinds addObject:UICollectionElementKindSectionFooter];
+        }
+        return supportedElementKinds;
+    }
+    return @[];
 }
 
 

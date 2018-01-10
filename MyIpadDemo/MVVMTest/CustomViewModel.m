@@ -30,11 +30,12 @@
 
 @implementation CustomViewModel
 
-- (void)update {
+- (void)intializeTimer {
     _insetTop = 10;
-    [NSTimer scheduledTimerWithTimeInterval:2 repeats:true block:^(NSTimer * _Nonnull timer) {
+    [NSTimer scheduledTimerWithTimeInterval:2 repeats:false block:^(NSTimer * _Nonnull timer) {
+        self.state = ViewModelStateIdle;
         if (self.itemCount < 4) {
-            self.itemCount += 1;
+            self.itemCount += 3;
             [self reload:true];
         }
         else {
@@ -50,6 +51,36 @@
     }];
 }
 
+- (void)loadData {
+    [self.delegate setNeedsUpdate];
+}
+
+- (void)updateWithCompletion:(void (^)(BOOL))completion {
+    [self markState:ViewModelStateUpdating completion:^{
+        [self reload:false];
+        [self intializeTimer];
+    }];
+}
+
+- (void)refreshWithCompletion:(void (^)(BOOL))completion {
+    [self markState:ViewModelStateRefreshing completion:^{
+        dispatch_after(2, dispatch_get_main_queue(), ^{
+            self.state = ViewModelStateIdle;
+            self.itemCount = 4;
+            [self reload:false];
+        });
+    }];
+}
+
+- (void)loadMoreWithCompletion:(void (^)(BOOL))completion {
+    [self markState:ViewModelStateLoadingMore completion:^{
+        dispatch_after(2, dispatch_get_main_queue(), ^{
+            self.state = ViewModelStateIdle;
+            self.itemCount += 4;
+            [self reload:false];
+        });
+    }];
+}
 
 - (NSArray<BaseSectionModel *> *)newSectionModels {
     NSMutableArray<BaseCellModel *> *cells = [NSMutableArray<BaseCellModel *> new];
@@ -69,9 +100,11 @@
     firstSection.inset = UIEdgeInsetsMake(_insetTop, 10, _insetTop, 10);
     firstSection.diffIdentifier = _firstSectionTag;
     
-    CustomCellModel *cell = [[CustomCellModel alloc] initWithData:[NSNumber numberWithInteger:999]];
-    cell.backgroundColor = [UIColor blueColor];
-    firstSection.headerCell = cell;
+    if (self.state == ViewModelStateUpdating) {
+        CustomCellModel *cell = [[CustomCellModel alloc] initWithData:[NSNumber numberWithInteger:999]];
+        cell.backgroundColor = [UIColor blueColor];
+        firstSection.headerCell = cell;
+    }
     _firstSectionModel = firstSection;
     
     NSMutableArray<BaseCellModel *> *cells2 = [NSMutableArray<BaseCellModel *> new];

@@ -18,11 +18,29 @@
 
 - (void)bindViewModel:(BaseViewModel *)viewModel {
     [super bindViewModel:viewModel];
-    [self.viewModel update];
 }
 
 - (NSDictionary<NSString *, Class> *)cellModel2Cell {
     return @{[CustomCellModel cellIdentifier]: [CustomCollectionViewCell class]};
+}
+
+- (BOOL)isRefreshEnabled {
+    return true;
+}
+
+- (BOOL)isLoadMoreEnabled {
+    return true;
+}
+
+- (void)sectionController:(nonnull IGListBindingSectionController *)sectionController didSelectItemAtIndex:(NSInteger)index viewModel:(nonnull id)viewModel {
+    if ([viewModel isKindOfClass:[CustomCellModel class]]) {
+        CustomCellModel *cellModel = (CustomCellModel *)viewModel;
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"点击了一个Cell" message:cellModel.data.stringValue preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [alertController dismissViewControllerAnimated:true completion:nil];
+        }]];
+        [self presentViewController:alertController animated:true completion:nil];
+    }
 }
 
 

@@ -17,6 +17,8 @@
 
 @property (nonatomic, strong, readonly) UICollectionView *collectionView;
 
+@property (nonatomic, assign, readonly) BOOL isAppearing;
+
 - (UICollectionViewLayout *)loadCollectionLayout;
 
 - (UICollectionView *)loadCollectionView;
@@ -25,6 +27,10 @@
 
 //need override
 - (ViewModelType)loadViewModel;
+
+- (BOOL)isRefreshEnabled;
+
+- (BOOL)isLoadMoreEnabled;
 
 //need override
 - (NSDictionary<NSString *, Class> *) cellModel2Cell;

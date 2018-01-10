@@ -11,7 +11,7 @@
 @implementation CustomCellModel
 
 - (CGSize)calculateSizeForContainerSize:(CGSize)containerSize {
-    return CGSizeMake((containerSize.width - 40)/2, (containerSize.width - 40)/2);
+    return CGSizeMake((containerSize.width - 40)/5, (containerSize.width - 40)/5);
 }
 
 @end

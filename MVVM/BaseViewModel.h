@@ -9,11 +9,24 @@
 #import <Foundation/Foundation.h>
 #import "BaseSectionModel.h"
 
+typedef NS_ENUM (NSInteger, ViewModelState) {
+    ViewModelStateIdle,
+    ViewModelStateError,
+    ViewModelStateRefreshing,
+    ViewModelStateLoadingMore,
+    ViewModelStateUpdating
+};
+
+
 @protocol BaseViewModelDelegate
 
 @required
 
-- (void)performUpdatesAnimated:(BOOL)animated completion:(IGListUpdaterCompletion)completion;
+- (void)reload:(BOOL)animated completion:(IGListUpdaterCompletion)completion;
+
+- (void)setNeedsUpdate;
+
+- (void)setNeedsRefresh;
 
 @end
 
@@ -25,19 +38,25 @@
 
 @property(nonatomic, weak) id<BaseViewModelDelegate> delegate;
 
-@property (nonatomic, assign) BOOL isLoading;
+@property (nonatomic, assign) ViewModelState state;
 
-@property (nonatomic, assign) BOOL isLoadingMore;
+- (void)updateWithCompletion:(void(^)(BOOL))completion;
 
-@property (nonatomic, assign) BOOL isRefreshing;
+- (void)refreshWithCompletion:(void(^)(BOOL))completion;
+
+- (void)loadMoreWithCompletion:(void(^)(BOOL))completion;
+
+- (void)markState:(ViewModelState)state completion:(void(^)(void))completion;
 
 - (void)didBindViewController;
 
 - (void)reload:(BOOL)animated;
 
+- (void)performUpdatesAnimated:(BOOL)animated completion:(IGListUpdaterCompletion)completion;
+
 //need override
 - (NSArray<BaseSectionModel *> *) newSectionModels;
 
-- (void)performUpdatesAnimated:(BOOL)animated completion:(IGListUpdaterCompletion)completion;
+- (void)loadData;
 
 @end
