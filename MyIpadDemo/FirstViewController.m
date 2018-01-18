@@ -65,11 +65,11 @@
 
 - (void)selectViewController:(UITableView *)SelectViewController didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
  
-    UIColor *color = [UIColor colorWithRed:indexPath.row/10.0 green:0 blue:0 alpha:1];
-    
-    ColorViewController* colorViewController = [ColorViewController new];
-    colorViewController.backgroundColor = color;
-    [_splitViewController showDetailViewController:colorViewController sender:nil];
+//    UIColor *color = [UIColor colorWithRed:indexPath.row/10.0 green:0 blue:0 alpha:1];
+//
+//    ColorViewController* colorViewController = [ColorViewController new];
+//    colorViewController.backgroundColor = color;
+//    [_splitViewController showDetailViewController:colorViewController sender:nil];
     
 //    _colorViewController.backgroundColor = color;
 }
