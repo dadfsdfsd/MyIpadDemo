@@ -33,7 +33,7 @@
     
     [self.contentView addSubview:_titleLabe];
     
-    self.backgroundColor = [UIColor redColor];
+//    self.backgroundColor = [UIColor redColor];
 }
 
 - (void)layoutSubviews {
@@ -44,9 +44,9 @@
 
 - (void)bindCellModel:(id)cellModel {
     CustomCellModel *customCellModel = (CustomCellModel *)cellModel;
-    if ([customCellModel isKindOfClass:[BaseDataCellModel<NSNumber *> class]]) {
-        _titleLabe.text = [NSString stringWithFormat:@"%ld", (long)customCellModel.data.integerValue];
-        _titleLabe.backgroundColor = customCellModel.backgroundColor;
+    if ([customCellModel isKindOfClass:[CustomCellModel class]]) {
+        _titleLabe.text = [NSString stringWithFormat:@"%ld", (long)customCellModel.data.index];
+        self.tintColor = [UIColor blackColor];
     }
     
 }

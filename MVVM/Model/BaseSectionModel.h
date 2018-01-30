@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) NSArray<BaseCellModel*>* cellModels;
 
-@property (nonatomic, assign) id<NSObject> diffIdentifier;
+@property (nonatomic, strong) id<NSObject> diffIdentifier;
 
 @property (nonatomic, assign) UIEdgeInsets inset;
 

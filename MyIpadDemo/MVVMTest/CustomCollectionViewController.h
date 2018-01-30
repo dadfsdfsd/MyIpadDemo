@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BaseCollectionViewController.h"
 #import "CustomViewModel.h"
+#import <ReactiveObjC/ReactiveObjC.h>
 
 @interface CustomCollectionViewController<CustomViewModel> : BaseCollectionViewController
 

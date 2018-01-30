@@ -12,7 +12,7 @@
 #import <MJRefresh/MJRefresh.h>
 
 
-@interface BaseCollectionViewController()<IGListAdapterDataSource, UIScrollViewDelegate, BaseViewModelDelegate, IGListBindingSectionControllerSelectionDelegate>
+@interface BaseCollectionViewController()<IGListAdapterDataSource, IGListAdapterDelegate, UICollectionViewDelegate, BaseViewModelDelegate, IGListBindingSectionControllerSelectionDelegate>
 
 @property (nonatomic, strong) IGListAdapter *listAdapter;
 
@@ -27,15 +27,21 @@
 
 - (void)loadView {
     _collectionView = [self loadCollectionView];
+    _listAdapter = [self loadListAdapter];
     self.view = self.collectionView;
     
     [self checkLoadMoreEnabled];
     [self checkRefreshHeaderEnabled];
-    
-    _listAdapter = [[IGListAdapter alloc] initWithUpdater:[IGListAdapterUpdater new] viewController:self];
-    _listAdapter.dataSource = self;
-    _listAdapter.collectionView = self.collectionView;
-    _listAdapter.scrollViewDelegate = self;
+}
+
+- (IGListAdapter *)loadListAdapter {
+    IGListAdapter *listAdapter = [[IGListAdapter alloc] initWithUpdater:[IGListAdapterUpdater new] viewController:self];
+    listAdapter.dataSource = self;
+    listAdapter.delegate = self;
+    listAdapter.collectionView = _collectionView;
+    listAdapter.scrollViewDelegate = self;
+    listAdapter.collectionViewDelegate = self;
+    return listAdapter;
 }
 
 - (BaseViewModel *)loadViewModel {
@@ -216,7 +222,7 @@
 
 - (void)beginRefreshing {
     _needsRefresh = false;
-    [_viewModel refreshWithCompletion:nil];
+    [_collectionView.mj_header beginRefreshing];
 }
 
 - (void)beginUpdating {
@@ -236,6 +242,15 @@
 }
 
 - (void)sectionController:(nonnull IGListBindingSectionController *)sectionController didSelectItemAtIndex:(NSInteger)index viewModel:(nonnull id)viewModel {
+}
+
+
+- (void)listAdapter:(nonnull IGListAdapter *)listAdapter didEndDisplayingObject:(nonnull id)object atIndex:(NSInteger)index {
+    
+}
+
+- (void)listAdapter:(nonnull IGListAdapter *)listAdapter willDisplayObject:(nonnull id)object atIndex:(NSInteger)index {
+    
 }
 
 

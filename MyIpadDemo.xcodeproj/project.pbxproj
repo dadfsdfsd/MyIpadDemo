@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C047C02201B31BF0096F5D4 /* CustomLoadingCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C047C01201B31BF0096F5D4 /* CustomLoadingCellModel.m */; };
+		3C047C05201B31DC0096F5D4 /* CustomLoadingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C047C04201B31DC0096F5D4 /* CustomLoadingCollectionViewCell.m */; };
 		3C1D7165200349CD00F42FFC /* CustomCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D7164200349CD00F42FFC /* CustomCollectionViewController.m */; };
 		3C1D716820034A0F00F42FFC /* CustomViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D716720034A0F00F42FFC /* CustomViewModel.m */; };
 		3C1D716B20034E7600F42FFC /* CustomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D716A20034E7600F42FFC /* CustomData.m */; };
 		3C1D716E2003598300F42FFC /* CustomCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D716D2003598300F42FFC /* CustomCellModel.m */; };
 		3C1D7171200359BC00F42FFC /* BaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D7170200359BC00F42FFC /* BaseCollectionViewCell.m */; };
 		3C1D717420035FDA00F42FFC /* CustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D717320035FDA00F42FFC /* CustomCollectionViewCell.m */; };
+		3C41466E2019B442006CF4CA /* BaseDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C41466D2019B442006CF4CA /* BaseDataModel.m */; };
+		3C4146712019B5F3006CF4CA /* BaseDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4146702019B5F3006CF4CA /* BaseDataStore.m */; };
+		3C49F0C820187C3D004E07A1 /* NMHitTestButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C49F0C720187C3D004E07A1 /* NMHitTestButton.m */; };
 		3C4AD08A1FFC87D700871172 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4AD0891FFC87D700871172 /* AppDelegate.m */; };
 		3C4AD08D1FFC87D700871172 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4AD08C1FFC87D700871172 /* ViewController.m */; };
 		3C4AD0901FFC87D700871172 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C4AD08E1FFC87D700871172 /* Main.storyboard */; };
@@ -25,6 +30,7 @@
 		3C4AD0C61FFCC64600871172 /* ColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4AD0C51FFCC64600871172 /* ColorViewController.m */; };
 		3C4AD0C91FFCC88900871172 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4AD0C81FFCC88900871172 /* SelectViewController.m */; };
 		3C4AD0CC1FFCCC7C00871172 /* SelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4AD0CB1FFCCC7C00871172 /* SelectTableViewCell.m */; };
+		3C5F5B152011DBDE00A8764A /* NSArray+Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5F5B142011DBDE00A8764A /* NSArray+Sequence.m */; };
 		3C70F67F20030EA700D2082B /* BaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70F67A20030EA700D2082B /* BaseCellModel.m */; };
 		3C70F68020030EA700D2082B /* BaseDataCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70F67C20030EA700D2082B /* BaseDataCellModel.m */; };
 		3C70F68120030EA700D2082B /* BaseSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70F67E20030EA700D2082B /* BaseSectionModel.m */; };
@@ -53,6 +59,10 @@
 
 /* Begin PBXFileReference section */
 		14076A8510D31E4F25413082 /* Pods-MyIpadDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyIpadDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyIpadDemo/Pods-MyIpadDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		3C047C00201B31BF0096F5D4 /* CustomLoadingCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomLoadingCellModel.h; sourceTree = "<group>"; };
+		3C047C01201B31BF0096F5D4 /* CustomLoadingCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomLoadingCellModel.m; sourceTree = "<group>"; };
+		3C047C03201B31DC0096F5D4 /* CustomLoadingCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomLoadingCollectionViewCell.h; sourceTree = "<group>"; };
+		3C047C04201B31DC0096F5D4 /* CustomLoadingCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomLoadingCollectionViewCell.m; sourceTree = "<group>"; };
 		3C1D7163200349CD00F42FFC /* CustomCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewController.h; sourceTree = "<group>"; };
 		3C1D7164200349CD00F42FFC /* CustomCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewController.m; sourceTree = "<group>"; };
 		3C1D716620034A0F00F42FFC /* CustomViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomViewModel.h; sourceTree = "<group>"; };
@@ -65,6 +75,12 @@
 		3C1D7170200359BC00F42FFC /* BaseCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewCell.m; sourceTree = "<group>"; };
 		3C1D717220035FDA00F42FFC /* CustomCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewCell.h; sourceTree = "<group>"; };
 		3C1D717320035FDA00F42FFC /* CustomCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewCell.m; sourceTree = "<group>"; };
+		3C41466C2019B442006CF4CA /* BaseDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseDataModel.h; sourceTree = "<group>"; };
+		3C41466D2019B442006CF4CA /* BaseDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseDataModel.m; sourceTree = "<group>"; };
+		3C41466F2019B5F3006CF4CA /* BaseDataStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseDataStore.h; sourceTree = "<group>"; };
+		3C4146702019B5F3006CF4CA /* BaseDataStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseDataStore.m; sourceTree = "<group>"; };
+		3C49F0C620187C3C004E07A1 /* NMHitTestButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMHitTestButton.h; sourceTree = "<group>"; };
+		3C49F0C720187C3D004E07A1 /* NMHitTestButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMHitTestButton.m; sourceTree = "<group>"; };
 		3C4AD0851FFC87D700871172 /* MyIpadDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyIpadDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C4AD0881FFC87D700871172 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3C4AD0891FFC87D700871172 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -89,6 +105,8 @@
 		3C4AD0C81FFCC88900871172 /* SelectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
 		3C4AD0CA1FFCCC7C00871172 /* SelectTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectTableViewCell.h; sourceTree = "<group>"; };
 		3C4AD0CB1FFCCC7C00871172 /* SelectTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectTableViewCell.m; sourceTree = "<group>"; };
+		3C5F5B132011DBDE00A8764A /* NSArray+Sequence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sequence.h"; sourceTree = "<group>"; };
+		3C5F5B142011DBDE00A8764A /* NSArray+Sequence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sequence.m"; sourceTree = "<group>"; };
 		3C70F67920030EA700D2082B /* BaseCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCellModel.h; sourceTree = "<group>"; };
 		3C70F67A20030EA700D2082B /* BaseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCellModel.m; sourceTree = "<group>"; };
 		3C70F67B20030EA700D2082B /* BaseDataCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDataCellModel.h; sourceTree = "<group>"; };
@@ -134,6 +152,8 @@
 		3C1D71622003499200F42FFC /* MVVMTest */ = {
 			isa = PBXGroup;
 			children = (
+				3C49F0C620187C3C004E07A1 /* NMHitTestButton.h */,
+				3C49F0C720187C3D004E07A1 /* NMHitTestButton.m */,
 				3C1D717220035FDA00F42FFC /* CustomCollectionViewCell.h */,
 				3C1D717320035FDA00F42FFC /* CustomCollectionViewCell.m */,
 				3C1D716C2003598300F42FFC /* CustomCellModel.h */,
@@ -144,6 +164,10 @@
 				3C1D716720034A0F00F42FFC /* CustomViewModel.m */,
 				3C1D7163200349CD00F42FFC /* CustomCollectionViewController.h */,
 				3C1D7164200349CD00F42FFC /* CustomCollectionViewController.m */,
+				3C047C00201B31BF0096F5D4 /* CustomLoadingCellModel.h */,
+				3C047C01201B31BF0096F5D4 /* CustomLoadingCellModel.m */,
+				3C047C03201B31DC0096F5D4 /* CustomLoadingCollectionViewCell.h */,
+				3C047C04201B31DC0096F5D4 /* CustomLoadingCollectionViewCell.m */,
 			);
 			path = MVVMTest;
 			sourceTree = "<group>";
@@ -217,6 +241,7 @@
 		3C4AD0CD1FFCCCB700871172 /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				3C5F5B122011DBC300A8764A /* Utils */,
 				3C70F68320030EF200D2082B /* BaseViewModel.h */,
 				3C70F68220030EF200D2082B /* BaseViewModel.m */,
 				3C1D716F200359BC00F42FFC /* BaseCollectionViewCell.h */,
@@ -230,6 +255,15 @@
 			path = MVVM;
 			sourceTree = "<group>";
 		};
+		3C5F5B122011DBC300A8764A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3C5F5B132011DBDE00A8764A /* NSArray+Sequence.h */,
+				3C5F5B142011DBDE00A8764A /* NSArray+Sequence.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		3C70F67820030EA700D2082B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +273,10 @@
 				3C70F67C20030EA700D2082B /* BaseDataCellModel.m */,
 				3C70F67D20030EA700D2082B /* BaseSectionModel.h */,
 				3C70F67E20030EA700D2082B /* BaseSectionModel.m */,
+				3C41466C2019B442006CF4CA /* BaseDataModel.h */,
+				3C41466D2019B442006CF4CA /* BaseDataModel.m */,
+				3C41466F2019B5F3006CF4CA /* BaseDataStore.h */,
+				3C4146702019B5F3006CF4CA /* BaseDataStore.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -451,8 +489,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C1D7165200349CD00F42FFC /* CustomCollectionViewController.m in Sources */,
+				3C047C05201B31DC0096F5D4 /* CustomLoadingCollectionViewCell.m in Sources */,
+				3C5F5B152011DBDE00A8764A /* NSArray+Sequence.m in Sources */,
 				3C1D7171200359BC00F42FFC /* BaseCollectionViewCell.m in Sources */,
 				3C1D717420035FDA00F42FFC /* CustomCollectionViewCell.m in Sources */,
+				3C41466E2019B442006CF4CA /* BaseDataModel.m in Sources */,
 				3C4AD0C91FFCC88900871172 /* SelectViewController.m in Sources */,
 				3C70F68420030EF200D2082B /* BaseViewModel.m in Sources */,
 				3C4AD08D1FFC87D700871172 /* ViewController.m in Sources */,
@@ -461,14 +502,17 @@
 				3C1D716E2003598300F42FFC /* CustomCellModel.m in Sources */,
 				3C70F68020030EA700D2082B /* BaseDataCellModel.m in Sources */,
 				3C4AD0981FFC87D700871172 /* main.m in Sources */,
+				3C047C02201B31BF0096F5D4 /* CustomLoadingCellModel.m in Sources */,
 				3C4AD08A1FFC87D700871172 /* AppDelegate.m in Sources */,
 				3C4AD0C31FFCC36D00871172 /* FirstViewController.m in Sources */,
 				3C1D716820034A0F00F42FFC /* CustomViewModel.m in Sources */,
 				3C4AD0CC1FFCCC7C00871172 /* SelectTableViewCell.m in Sources */,
 				3C1D716B20034E7600F42FFC /* CustomData.m in Sources */,
 				3C70F68120030EA700D2082B /* BaseSectionModel.m in Sources */,
+				3C49F0C820187C3D004E07A1 /* NMHitTestButton.m in Sources */,
 				3C70F67F20030EA700D2082B /* BaseCellModel.m in Sources */,
 				3CD3E8BC1FFF6B39008E1621 /* BaseCollectionViewController.m in Sources */,
+				3C4146712019B5F3006CF4CA /* BaseDataStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

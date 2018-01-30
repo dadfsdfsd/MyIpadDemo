@@ -11,7 +11,7 @@
 @implementation CustomData
 
 - (nonnull id<NSObject>)diffIdentifier {
-    return self;
+    return @(self.index);
 }
 
 - (BOOL)isEqualToDiffableObject:(nullable id<IGListDiffable>)object {
@@ -21,5 +21,16 @@
     }
     return false;
 }
+
+- (BOOL)isEqual:(id)other {
+    if (other == self) {
+        return YES;
+    } else if (![super isEqual:other]) {
+        return NO;
+    } else {
+        return NO;
+    }
+}
+
 
 @end

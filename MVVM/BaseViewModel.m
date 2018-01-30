@@ -8,6 +8,12 @@
 
 #import "BaseViewModel.h"
 
+@interface BaseViewModel ()
+    
+@property(nonatomic, strong) NSArray<BaseSectionModel *> *visibleSectionModels;
+
+@end
+
 
 @implementation BaseViewModel {
     
@@ -20,10 +26,10 @@
         [self loadData];
     }
     else {
-        _visibleSectionModels = @[];
         __weak __typeof(self) weakSelf = self;
+        NSArray<BaseSectionModel *> *array = [NSArray arrayWithArray:_sectionModels];
         [self performUpdatesAnimated:false completion:^(BOOL finished) {
-            [weakSelf refreshVisibleSectionModels];
+            weakSelf.visibleSectionModels = array;
         }];
     }
 }
@@ -62,13 +68,10 @@
 - (void)reload:(BOOL)aniamted {
     _sectionModels = [self newSectionModels];
     __weak __typeof(self) weakSelf = self;
+    NSArray<BaseSectionModel *> *array = [NSArray arrayWithArray:_sectionModels];
     [self performUpdatesAnimated:aniamted completion:^(BOOL finished) {
-        [weakSelf refreshVisibleSectionModels];
+        weakSelf.visibleSectionModels = array;
     }];
-}
-
-- (void)refreshVisibleSectionModels {
-    _visibleSectionModels = _sectionModels;
 }
 
 - (NSArray<BaseSectionModel *> *)newSectionModels {
@@ -78,5 +81,36 @@
 - (void)performUpdatesAnimated:(BOOL)animated completion:(IGListUpdaterCompletion)completion {
     [_delegate reload:animated completion:completion];
 }
+
+- (BaseSectionModel *)sectionModelAtIndex:(NSInteger)index {
+    if (index < _sectionModels.count) {
+        return _sectionModels[index];
+    }
+    return nil;
+}
+
+- (BaseSectionModel *)visibleSectionModelAtIndex:(NSInteger)index {
+    if (index < _visibleSectionModels.count) {
+        return _visibleSectionModels[index];
+    }
+    return nil;
+}
+
+- (BaseCellModel *)cellModelAtIndexPath:(NSIndexPath *)indexPath {
+    BaseSectionModel *sectionModel = [self sectionModelAtIndex:indexPath.section];
+    if (sectionModel && indexPath.row < sectionModel.cellModels.count) {
+        return sectionModel.cellModels[indexPath.row];
+    }
+    return nil;
+}
+
+- (BaseCellModel *)visibleCellModelAtIndexPath:(NSIndexPath *)indexPath {
+    BaseSectionModel *sectionModel = [self visibleSectionModelAtIndex:indexPath.section];
+    if (sectionModel && indexPath.row < sectionModel.cellModels.count) {
+        return sectionModel.cellModels[indexPath.row];
+    }
+    return nil;
+}
+
 
 @end

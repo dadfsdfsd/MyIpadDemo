@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewModel.h"
+#import <ReactiveObjC/ReactiveObjC.h>
 
 @interface CustomViewModel : BaseViewModel
 

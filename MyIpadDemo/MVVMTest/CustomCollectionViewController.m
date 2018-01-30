@@ -8,7 +8,10 @@
 
 #import "CustomCollectionViewController.h"
 #import "CustomCellModel.h"
+#import "CustomLoadingCellModel.h"
 #import "CustomCollectionViewCell.h"
+#import "CustomLoadingCollectionViewCell.h"
+ 
 
 @implementation CustomCollectionViewController
 
@@ -21,7 +24,9 @@
 }
 
 - (NSDictionary<NSString *, Class> *)cellModel2Cell {
-    return @{[CustomCellModel cellIdentifier]: [CustomCollectionViewCell class]};
+    return @{[CustomCellModel cellIdentifier]: [CustomCollectionViewCell class],
+             [CustomLoadingCellModel cellIdentifier]: [CustomLoadingCollectionViewCell class]
+             };
 }
 
 - (BOOL)isRefreshEnabled {
@@ -34,12 +39,13 @@
 
 - (void)sectionController:(nonnull IGListBindingSectionController *)sectionController didSelectItemAtIndex:(NSInteger)index viewModel:(nonnull id)viewModel {
     if ([viewModel isKindOfClass:[CustomCellModel class]]) {
-        CustomCellModel *cellModel = (CustomCellModel *)viewModel;
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"点击了一个Cell" message:cellModel.data.stringValue preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            [alertController dismissViewControllerAnimated:true completion:nil];
-        }]];
-        [self presentViewController:alertController animated:true completion:nil];
+        [self beginRefreshing];
+//        CustomCellModel *cellModel = (CustomCellModel *)viewModel;
+//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"点击了一个Cell" message:@"sdf" preferredStyle:UIAlertControllerStyleAlert];
+//        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//            [alertController dismissViewControllerAnimated:true completion:nil];
+//        }]];
+//        [self presentViewController:alertController animated:true completion:nil];
     }
 }
 

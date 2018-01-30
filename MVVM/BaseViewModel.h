@@ -54,6 +54,14 @@ typedef NS_ENUM (NSInteger, ViewModelState) {
 
 - (void)performUpdatesAnimated:(BOOL)animated completion:(IGListUpdaterCompletion)completion;
 
+- (BaseSectionModel *)sectionModelAtIndex:(NSInteger)index;
+
+- (BaseSectionModel *)visibleSectionModelAtIndex:(NSInteger)index;
+
+- (BaseCellModel *)cellModelAtIndexPath:(NSIndexPath *)indexPath;
+
+- (BaseCellModel *)visibleCellModelAtIndexPath:(NSIndexPath *)indexPath;
+
 //need override
 - (NSArray<BaseSectionModel *> *) newSectionModels;
 

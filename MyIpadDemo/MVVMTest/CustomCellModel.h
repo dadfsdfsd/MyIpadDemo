@@ -7,8 +7,9 @@
 //
 
 #import "BaseDataCellModel.h"
+#import "CustomData.h"
 
-@interface CustomCellModel : BaseDataCellModel<NSNumber *>
+@interface CustomCellModel : BaseDataCellModel<CustomData *>
 
 @property (nonatomic, strong) UIColor *backgroundColor;
 

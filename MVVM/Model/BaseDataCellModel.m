@@ -8,6 +8,7 @@
 
 #import "BaseDataCellModel.h"
 
+
 @implementation BaseDataCellModel
 
 - (instancetype)initWithData:(id)data {
@@ -15,6 +16,18 @@
         self.data = data;
     }
     return self;
+}
+
+- (void)setData:(id<IGListDiffable>)data {
+    if (_data != data) {
+        _data = data;
+        [self didLoadData];
+    }
+}
+
+
+- (void)didLoadData {
+    
 }
 
 - (id<NSObject>)diffIdentifier {

@@ -25,6 +25,8 @@
 
 - (void)bindViewModel:(ViewModelType)viewModel;
 
+- (IGListAdapter *)loadListAdapter;
+
 //need override
 - (ViewModelType)loadViewModel;
 
@@ -32,7 +34,10 @@
 
 - (BOOL)isLoadMoreEnabled;
 
-//need override
+- (void)beginRefreshing;
+
+- (void)beginUpdating;
+
 - (NSDictionary<NSString *, Class> *) cellModel2Cell;
 
 @end
