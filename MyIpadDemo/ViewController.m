@@ -11,6 +11,7 @@
 #import "CustomCollectionViewController.h"
 #import <BlocksKit+UIKit.h>
 #import "NSObject+A2DynamicDelegate.h"
+#import "NSObject+ObservationManager.h"
 //#import "n"
 
 @protocol DoSomeProtocol

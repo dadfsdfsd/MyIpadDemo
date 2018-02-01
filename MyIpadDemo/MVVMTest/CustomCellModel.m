@@ -13,12 +13,12 @@
 - (CGSize)calculateSizeForContainerSize:(CGSize)containerSize {
 //    return CGSizeMake((containerSize.width - 40)/1, (containerSize.width - 40)/1);
     
-    return CGSizeMake((containerSize.width - 40)/1, 50);
+    return CGSizeMake((containerSize.width - 40)/2, 50);
 }
 
-- (BOOL)isEqualToDiffableObject:(id<IGListDiffable>)object {
-    
-    return [super isEqualToDiffableObject:object] && [self.backgroundColor isEqual:[(CustomCellModel *)object backgroundColor]];
-}
+//- (BOOL)isEqualToDiffableObject:(id<IGListDiffable>)object {
+//
+//    return [super isEqualToDiffableObject:object] && [self.backgroundColor isEqual:[(CustomCellModel *)object backgroundColor]];
+//}
 
 @end

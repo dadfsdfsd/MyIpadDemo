@@ -40,6 +40,7 @@
         return [self.data isEqualToDiffableObject:cellModel.data];
     }
     return false;
+//    return object == self;
 }
 
 @end

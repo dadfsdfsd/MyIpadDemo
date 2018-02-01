@@ -8,6 +8,10 @@
 
 #import "BaseCollectionViewCell.h"
 
+@interface BaseCollectionViewCell ()<IGListBindable>
+
+@end
+
 @implementation BaseCollectionViewCell
 
 - (void)bindCellModel:(id)cellModel {

@@ -13,6 +13,7 @@
 #import <ReactiveObjC.h>
 #import "CustomData.h"
 #import "CustomLoadingCellModel.h"
+#import "NSMutableArray+Move.h"
 
 @interface CustomViewModel()
 
@@ -22,49 +23,35 @@
 
 @property (nonatomic, assign) BOOL reverse;
 
-@property (nonatomic, strong) NSMutableArray<CustomData *> *itemDatas;
+@property (nonatomic, strong) NSMutableArray<CustomSectionData *> *itemDatas;
 
 @end
 
 
 @implementation CustomViewModel
 
-- (void)intializeTimer {
-    _insetTop = 10;
-    [NSTimer scheduledTimerWithTimeInterval:2 repeats:false block:^(NSTimer * _Nonnull timer) {
-        self.state = ViewModelStateIdle;
-        if (self.itemCount < 4) {
-            self.itemCount += 3;
-            [self reload:true];
-        }
-        else {
-//            if (self.insetTop < 50) {
-//                self.insetTop += 10;
-//                [self reload:true];
-//            }
-//            else {
-                _reverse = !_reverse;
-                [self reload:true];
-//            }
-        }
-    }];
-}
-
 - (void)loadData {
-    _insetTop = 10;
+    _insetTop = 30;
     _itemDatas = [NSMutableArray new];
     [self.delegate setNeedsUpdate];
 }
 
 - (void)updateWithCompletion:(void (^)(BOOL))completion {
     [self markState:ViewModelStateUpdating completion:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             self.state = ViewModelStateIdle;
             NSUInteger index = _itemDatas.count;
             for (NSUInteger i = index; i < index + 20; i++) {
-                CustomData *data = [CustomData new];
-                data.index = i;
-                [_itemDatas addObject:data];
+                NSInteger numberOfItems = random()%10;
+                NSMutableArray *items = [NSMutableArray new];
+                for (NSInteger i = numberOfItems; i < numberOfItems; i ++) {
+                    CustomData *subData = [CustomData new];
+                    subData.index = i;
+                    [items addObject:subData];
+                }
+                CustomSectionData *sectionData = [CustomSectionData new];
+                sectionData.items = items;
+                [_itemDatas addObject:sectionData];
             }
             [self reload:false];
         });
@@ -74,12 +61,12 @@
 
 - (void)refreshWithCompletion:(void (^)(BOOL))completion {
     [self markState:ViewModelStateRefreshing completion:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             self.state = ViewModelStateIdle;
             [_itemDatas removeAllObjects];
-            CustomData *data = [CustomData new];
-            data.index = _itemDatas.count;
-            [_itemDatas addObject:data];
+//            CustomData *data = [CustomData new];
+//            data.index = _itemDatas.count;
+//            [_itemDatas addObject:data];
             [self reload:false];
         });
     }];
@@ -89,93 +76,99 @@
     [self markState:ViewModelStateLoadingMore completion:^{
         dispatch_after(2, dispatch_get_main_queue(), ^{
             self.state = ViewModelStateIdle;
-            NSUInteger index = _itemDatas.count;
-            for (NSUInteger i = index; i < index + 20; i++) {
-                CustomData *data = [CustomData new];
-                data.index = i;
-                [_itemDatas addObject:data];
+ 
+            NSInteger numberOfItems = random()%10;
+            NSMutableArray *items = [NSMutableArray new];
+            for (NSInteger i = 0; i < numberOfItems; i ++) {
+                CustomData *subData = [CustomData new];
+                subData.index = i;
+                [items addObject:subData];
             }
+            CustomSectionData *sectionData = [CustomSectionData new];
+            _itemDatas.lastObject.items = items;
+            
+            for (NSUInteger i = 0; i < 1; i++) {
+                NSInteger numberOfItems = random()%10;
+                NSMutableArray *items = [NSMutableArray new];
+                for (NSInteger i = 0; i < numberOfItems; i ++) {
+                    CustomData *subData = [CustomData new];
+                    subData.index = i;
+                    [items addObject:subData];
+                }
+                CustomSectionData *sectionData = [CustomSectionData new];
+                sectionData.items = items;
+                [_itemDatas addObject:sectionData];
+            }
+            
+          
+            
+            
             [self reload:false];
         });
     }];
 }
 
 - (NSArray<BaseSectionModel *> *)newSectionModels {
-    NSMutableArray<BaseCellModel *> *cells = [NSMutableArray<BaseCellModel *> new];
-    [_itemDatas enumerateObjectsUsingBlock:^(CustomData * _Nonnull data, NSUInteger idx, BOOL * _Nonnull stop) {
-        CustomCellModel *cell = [[CustomCellModel alloc] initWithData:data];
-        cell.backgroundColor = [UIColor greenColor];
-        if (idx == _itemDatas.count - 2) {
-            cell.backgroundColor = [UIColor redColor];
-        }
-        [cells addObject: cell];
-    }];
- 
-    BaseSectionModel *firstSection = [BaseSectionModel sectionModelWithCellModels:cells];
-    firstSection.minimumInteritemSpacing = 20;
-    firstSection.minimumLineSpacing = 20;
-    firstSection.inset = UIEdgeInsetsMake(_insetTop, 10, _insetTop, 10);
-    firstSection.diffIdentifier = @"1";
+    
+    NSMutableArray<BaseSectionModel *> *sectionModels = [NSMutableArray new];
     
     if (self.state == ViewModelStateUpdating) {
         CustomLoadingCellModel *loadingCell = [CustomLoadingCellModel new];
-        firstSection.headerCell = loadingCell;
-    }
-    
-//    NSMutableArray<BaseCellModel *> *cells2 = [NSMutableArray<BaseCellModel *> new];
-//    for (NSInteger i = 0; i < _itemCount - 1; i ++) {
-//        CustomData *data = [CustomData new];
-//        data.index = i;
-//        CustomCellModel *cell = [[CustomCellModel alloc] initWithData:data];
-//        cell.backgroundColor = [UIColor redColor];
-//        [cells2 addObject: cell];
-//    }
-//
-//    if (_secondSectionTag == nil) {
-//        _secondSectionTag = @"2";
-//    }
-//
-//    BaseSectionModel *secondSection = [BaseSectionModel sectionModelWithCellModels:cells2];
-//    secondSection.minimumInteritemSpacing = 20;
-//    secondSection.minimumLineSpacing = 20;
-//    secondSection.inset = UIEdgeInsetsMake(_insetTop, 10, _insetTop, 10);
-//    secondSection.diffIdentifier = _secondSectionTag;
-    
-    if (!_reverse) {
-        return @[firstSection];
+        BaseSectionModel *section = [BaseSectionModel sectionModelWithCellModels:@[]];
+        section.headerCell = loadingCell;
+        [sectionModels addObject:section];
     }
     else {
-        return @[firstSection];
+        for (CustomSectionData *data in _itemDatas) {
+            NSMutableArray<BaseCellModel *> *cells = [NSMutableArray<BaseCellModel *> new];
+            for (CustomData *subData in data.items) {
+                CustomCellModel *cell = [[CustomCellModel alloc] initWithData:subData];
+                cell.backgroundColor = [UIColor greenColor];
+                [cells addObject: cell];
+            }
+            
+            if (cells.count > 0) {
+                BaseSectionModel *section = [BaseSectionModel sectionModelWithCellModels:cells];
+                section.minimumInteritemSpacing = 20;
+                section.minimumLineSpacing = 20;
+                section.inset = UIEdgeInsetsMake(_insetTop, 10, _insetTop, 10);
+                section.diffIdentifier = data;
+                [sectionModels addObject:section];
+            }
+        }
     }
+    
+    return sectionModels;
 }
 
-- (void)test {
-    RACSignal *siganl = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [subscriber sendNext:@1];
-        [subscriber sendCompleted];
-        return [RACDisposable disposableWithBlock:^{
-            NSLog(@"信号被销毁");
-        }];
-    }];
-    [siganl subscribeNext:^(id x) {
-        NSLog(@"接收到数据:%@",x);
-    }];
+- (void)doMove {
     
-    NSArray<NSNumber *> *array = @[@(1),@(2),@(3),@(4),@(5),@(6),@(7),@(8)];
-    
-    NSArray *newArray = [array.rac_sequence map:^id _Nullable(NSNumber*  _Nullable value) {
-        return [NSNumber numberWithInt:value.integerValue];
-    }];
-    
-    NSLog(@"%@", newArray);
-}
+    [_itemDatas enumerateObjectsUsingBlock:^(CustomSectionData * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMutableArray *tmp  = [obj.items mutableCopy];
+        if (obj.items.count > 5) {
+            [tmp moveObjectAtIndex:4 toIndex:0];
+            [tmp moveObjectAtIndex:3 toIndex:2];
+            [tmp moveObjectAtIndex:4 toIndex:3];
+            [tmp removeObjectAtIndex:0];
+            
+            CustomData *data = [CustomData new];
+            data.index = 999;
+            [tmp insertObject:data atIndex:3];
+            
+            [tmp removeObjectAtIndex:0];
+            
+            CustomData *data2 = [CustomData new];
+            data2.index = 9999;
+            [tmp insertObject:data2 atIndex:2];
+            
+            [tmp moveObjectAtIndex:3 toIndex:2];
+            [tmp moveObjectAtIndex:4 toIndex:3];
+            
+        }
 
-- (void)testTuple {
-    RACTuple *tuple = RACTuplePack(@"123",@1);
-    RACTupleUnpack(NSString *str,NSNumber *num) = tuple;
-    
-    
+        obj.items= [tmp copy];
+    }];
+    [self reload:true];
 }
-
 
 @end

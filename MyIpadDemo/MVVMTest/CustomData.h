@@ -9,7 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <IGListKit/IGListKit.h>
 
+@interface CustomSectionData : NSObject<IGListDiffable>
+
+@property (nonatomic, copy) NSArray* items;
+
+@end
+
 @interface CustomData : NSObject<IGListDiffable>
+
+@property (nonatomic, strong) UIColor *backgroundColor;
 
 @property (nonatomic, assign) NSInteger index;
 

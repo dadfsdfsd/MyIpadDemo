@@ -9,15 +9,101 @@
 #import "BaseSectionController.h"
 #import "BaseCollectionViewCell.h"
 
-@interface IGListBindingSectionController()<IGListSupplementaryViewSource>
+typedef NS_ENUM(NSInteger, IGListDiffingSectionState) {
+    IGListDiffingSectionStateIdle = 0,
+    IGListDiffingSectionStateUpdateQueued,
+    IGListDiffingSectionStateUpdateApplied
+};
+
+
+@interface IGListBindingSectionController()<IGListSupplementaryViewSource, IGListWorkingRangeDelegate>
 
 @property (nonatomic, strong, readwrite) NSArray<id<IGListDiffable>> *viewModels;
 
 @property (nonatomic, strong) id object;
 
+@property (nonatomic, assign) IGListDiffingSectionState state;
+
 @end
 
 @implementation BaseSectionController
+
+- (void)updateAnimated:(BOOL)animated completion:(void (^)(BOOL))completion {
+    IGAssertMainThread();
+
+    if (self.state != IGListDiffingSectionStateIdle) {
+        if (completion != nil) {
+            completion(NO);
+        }
+        return;
+    }
+    self.state = IGListDiffingSectionStateUpdateQueued;
+
+    __block IGListIndexSetResult *result = nil;
+    __block NSArray<id<IGListDiffable>> *oldViewModels = nil;
+
+    id<IGListCollectionContext> collectionContext = self.collectionContext;
+    [self.collectionContext performBatchAnimated:animated updates:^(id<IGListBatchContext> batchContext) {
+        if (self.state != IGListDiffingSectionStateUpdateQueued) {
+            return;
+        }
+
+        oldViewModels = self.viewModels;
+
+        id<IGListDiffable> object = self.object;
+        IGAssert(object != nil, @"Expected IGListBindingSectionController object to be non-nil before updating.");
+
+        NSArray *viewModels = [self.dataSource sectionController:self viewModelsForObject:object];
+        result = IGListDiff(oldViewModels, viewModels, IGListDiffEquality);
+
+        NSMutableArray *tmpViewModels = [NSMutableArray arrayWithArray:oldViewModels];
+
+        [result.updates enumerateIndexesUsingBlock:^(NSUInteger oldUpdatedIndex, BOOL *stop) {
+            id identifier = [oldViewModels[oldUpdatedIndex] diffIdentifier];
+            const NSInteger indexAfterUpdate = [result newIndexForIdentifier:identifier];
+            if (indexAfterUpdate != NSNotFound) {
+                UICollectionViewCell<IGListBindable> *cell = [collectionContext cellForItemAtIndex:oldUpdatedIndex
+                                                                                 sectionController:self];
+                [cell bindViewModel:viewModels[indexAfterUpdate]];
+                [tmpViewModels replaceObjectAtIndex:oldUpdatedIndex withObject:viewModels[indexAfterUpdate]];
+            }
+        }];
+
+        NSMutableArray *needMoveObjects = [NSMutableArray new];
+        NSMutableIndexSet *needMoveIndexs = [NSMutableIndexSet new];
+        [result.moves enumerateObjectsUsingBlock:^(IGListMoveIndex * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [needMoveObjects addObject:tmpViewModels[obj.from]];
+            [needMoveIndexs addIndex:obj.to];
+        }];
+
+        [tmpViewModels removeObjectsAtIndexes:result.deletes];
+
+        
+        NSMutableArray *needInsertObjects = [NSMutableArray new];
+        [result.inserts enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+            [needInsertObjects addObject:viewModels[idx]];
+        }];
+        [tmpViewModels insertObjects:needInsertObjects atIndexes:result.inserts];
+
+        [tmpViewModels replaceObjectsAtIndexes:needMoveIndexs withObjects:needMoveObjects];
+
+        self.viewModels = [tmpViewModels copy];
+
+        [batchContext deleteInSectionController:self atIndexes:result.deletes];
+        [batchContext insertInSectionController:self atIndexes:result.inserts];
+
+        for (IGListMoveIndex *move in result.moves) {
+            [batchContext moveInSectionController:self fromIndex:move.from toIndex:move.to];
+        }
+
+        self.state = IGListDiffingSectionStateUpdateApplied;
+    } completion:^(BOOL finished) {
+        self.state = IGListDiffingSectionStateIdle;
+        if (completion != nil) {
+            completion(YES);
+        }
+    }];
+}
 
 - (instancetype)initWithCellModelToCell:(NSDictionary<NSString *, Class> *)dictionary selectionDelegate:(id<IGListBindingSectionControllerSelectionDelegate>)delegate {
     if (self = [super init]) {
@@ -25,6 +111,7 @@
         self.dataSource = self;
         self.supplementaryViewSource = self;
         self.selectionDelegate = delegate;
+        self.workingRangeDelegate = self;
     }
     return self;
 }
@@ -33,7 +120,7 @@
     BaseCellModel *cellModel = (BaseCellModel *)viewModel;
     BaseCollectionViewCell *collectionViewCell = [self.collectionContext dequeueReusableCellOfClass:_cellModel2Cell[[cellModel.class cellIdentifier]] forSectionController:self atIndex:index];
     collectionViewCell.delegate = self;
-    return collectionViewCell;
+    return (UICollectionViewCell<IGListBindable> *)collectionViewCell;
 }
 
 - (CGSize)sectionController:(nonnull IGListBindingSectionController *)sectionController sizeForViewModel:(nonnull id)viewModel atIndex:(NSInteger)index {
@@ -109,6 +196,20 @@
         return supportedElementKinds;
     }
     return @[];
+}
+
+- (void)listAdapter:(IGListAdapter *)listAdapter sectionControllerDidExitWorkingRange:(IGListSectionController *)sectionController {
+    if ([self.object isKindOfClass:[BaseSectionModel class]]) {
+        BaseSectionModel *sectionModel = (BaseSectionModel *)self.object;
+        [sectionModel willEnterWorkingRange];
+    }
+}
+
+-(void)listAdapter:(IGListAdapter *)listAdapter sectionControllerWillEnterWorkingRange:(IGListSectionController *)sectionController {
+    if ([self.object isKindOfClass:[BaseSectionModel class]]) {
+        BaseSectionModel *sectionModel = (BaseSectionModel *)self.object;
+        [sectionModel didExitWorkingRange];
+    }
 }
 
 

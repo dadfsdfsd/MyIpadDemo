@@ -30,4 +30,8 @@
 
 + (instancetype)sectionModelWithCellModels:(NSArray<BaseCellModel *> *)cellModels;
 
+- (void)didExitWorkingRange;
+
+- (void)willEnterWorkingRange;
+
 @end

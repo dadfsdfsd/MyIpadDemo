@@ -39,14 +39,28 @@
 
 - (void)sectionController:(nonnull IGListBindingSectionController *)sectionController didSelectItemAtIndex:(NSInteger)index viewModel:(nonnull id)viewModel {
     if ([viewModel isKindOfClass:[CustomCellModel class]]) {
-        [self beginRefreshing];
-//        CustomCellModel *cellModel = (CustomCellModel *)viewModel;
-//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"点击了一个Cell" message:@"sdf" preferredStyle:UIAlertControllerStyleAlert];
-//        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-//            [alertController dismissViewControllerAnimated:true completion:nil];
-//        }]];
-//        [self presentViewController:alertController animated:true completion:nil];
+
+        CustomCellModel *cellModel = (CustomCellModel *)viewModel;
+        cellModel.backgroundColor = [UIColor purpleColor];
+        
+        CustomCellModel *cellModel2 =  (CustomCellModel *)[[self viewModel] cellModelAtIndexPath:[NSIndexPath indexPathForRow:index inSection:sectionController.section]];
+        
+        if (cellModel != cellModel2) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"error" message:@"cellModel error" preferredStyle:UIAlertControllerStyleAlert];
+            [self presentViewController:alert animated:true completion:nil];
+        }
     }
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"doMove" style:UIBarButtonItemStyleDone target:self action:@selector(doMove)];
+}
+
+- (void)doMove {
+    CustomViewModel *viewModel = [self viewModel];
+    [viewModel doMove];
 }
 
 

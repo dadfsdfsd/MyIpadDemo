@@ -8,6 +8,7 @@
 
 #import "CustomCollectionViewCell.h"
 #import "CustomCellModel.h"
+#import "NSObject+ObservationManager.h"
 
 @interface CustomCollectionViewCell()
 
@@ -43,12 +44,18 @@
 }
 
 - (void)bindCellModel:(id)cellModel {
+    [[self observationManager] unobserveAll];
+    
     CustomCellModel *customCellModel = (CustomCellModel *)cellModel;
     if ([customCellModel isKindOfClass:[CustomCellModel class]]) {
         _titleLabe.text = [NSString stringWithFormat:@"%ld", (long)customCellModel.data.index];
-        self.tintColor = [UIColor blackColor];
+        __weak __typeof(self) weakSelf = self;
+        [[self observationManager] observe:[[DynamicObservable<UIColor *> alloc] initWithTarget:customCellModel keyPath:@"backgroundColor" shouldRetainTarget:true] withEventHandler:^(ValueChange<UIColor *> *change) {
+            UIColor *newColor = change.nValue;
+            weakSelf.backgroundColor = newColor;
+        }];
+        self.backgroundColor = customCellModel.backgroundColor;
     }
-    
 }
 
 @end

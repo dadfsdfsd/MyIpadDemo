@@ -41,4 +41,12 @@
     return self;
 }
 
+- (void)didExitWorkingRange {
+    
+}
+
+- (void)willEnterWorkingRange {
+    
+}
+
 @end

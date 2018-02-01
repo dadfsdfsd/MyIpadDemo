@@ -17,12 +17,13 @@ typedef NS_ENUM (NSInteger, ViewModelState) {
     ViewModelStateUpdating
 };
 
+typedef void (^BaseViewModelUpdaterCompletion)(BOOL finished, NSArray<BaseSectionModel *> *sectionModels);
 
 @protocol BaseViewModelDelegate
 
 @required
 
-- (void)reload:(BOOL)animated completion:(IGListUpdaterCompletion)completion;
+- (void)reload:(BOOL)animated completion:(BaseViewModelUpdaterCompletion)completion;
 
 - (void)setNeedsUpdate;
 
@@ -33,8 +34,6 @@ typedef NS_ENUM (NSInteger, ViewModelState) {
 @interface BaseViewModel : NSObject
 
 @property(nonatomic, strong, readonly) NSArray<BaseSectionModel *> *sectionModels;
-
-@property(nonatomic, strong, readonly) NSArray<BaseSectionModel *> *visibleSectionModels;
 
 @property(nonatomic, weak) id<BaseViewModelDelegate> delegate;
 
@@ -52,15 +51,10 @@ typedef NS_ENUM (NSInteger, ViewModelState) {
 
 - (void)reload:(BOOL)animated;
 
-- (void)performUpdatesAnimated:(BOOL)animated completion:(IGListUpdaterCompletion)completion;
-
 - (BaseSectionModel *)sectionModelAtIndex:(NSInteger)index;
-
-- (BaseSectionModel *)visibleSectionModelAtIndex:(NSInteger)index;
 
 - (BaseCellModel *)cellModelAtIndexPath:(NSIndexPath *)indexPath;
 
-- (BaseCellModel *)visibleCellModelAtIndexPath:(NSIndexPath *)indexPath;
 
 //need override
 - (NSArray<BaseSectionModel *> *) newSectionModels;

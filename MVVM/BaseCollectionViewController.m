@@ -20,6 +20,8 @@
 
 @property (nonatomic, assign) BOOL needsRefresh;
 
+@property (nonatomic, strong) NSArray<BaseSectionModel *> *tmpDatas;
+
 @end
 
 @implementation BaseCollectionViewController
@@ -160,7 +162,8 @@
 }
 
 - (nonnull NSArray<id<IGListDiffable>> *)objectsForListAdapter:(nonnull IGListAdapter *)listAdapter {
-    return _viewModel.sectionModels;
+    _tmpDatas = [_viewModel newSectionModels];
+    return _tmpDatas;
 }
 
 - (void)checkRefreshHeaderEnabled{
@@ -203,10 +206,28 @@
     }
 }
 
-- (void)reload:(BOOL)animated completion:(IGListUpdaterCompletion)completion {
+- (void)reload:(BOOL)animated completion:(BaseViewModelUpdaterCompletion)completion {
     [self checkLoadMoreEnabled];
     [self checkRefreshHeaderEnabled];
-    [_listAdapter performUpdatesAnimated:animated completion:completion];
+    
+    [_listAdapter performUpdatesAnimated:animated completion:^(BOOL finished) {
+        if (finished) {
+            NSArray<BaseSectionModel *> *sectionModels = [_tmpDatas copy];
+            [[_listAdapter objects] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                BaseSectionController *sectionController =  (BaseSectionController *)[_listAdapter sectionControllerForObject:obj];
+                if ([sectionController isKindOfClass:[BaseSectionController class]] && idx < sectionModels.count) {
+                    sectionModels[idx].cellModels = [sectionController.viewModels copy];
+                }
+                else {
+                    NSLog(@"Error: SectionController must be BaseSectionController Or unknown error");
+                }
+            }];
+            completion(true, sectionModels);
+        }
+        else {
+            completion(false, nil);
+        }
+    }];
 }
 
 - (void)setNeedsRefresh {

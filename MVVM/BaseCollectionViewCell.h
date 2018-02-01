@@ -10,7 +10,7 @@
 #import <IGListKit/IGListKit.h>
 #import "BaseCellModel.h"
 
-@interface BaseCollectionViewCell : UICollectionViewCell<IGListBindable>
+@interface BaseCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong, readonly) id cellModel;
 

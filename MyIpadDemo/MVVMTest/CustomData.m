@@ -8,29 +8,27 @@
 
 #import "CustomData.h"
 
-@implementation CustomData
+@implementation CustomSectionData
 
 - (nonnull id<NSObject>)diffIdentifier {
-    return @(self.index);
+    return self;
 }
 
 - (BOOL)isEqualToDiffableObject:(nullable id<IGListDiffable>)object {
-    CustomData *data = (CustomData *)object;
-    if ([data isKindOfClass:[CustomData class]]) {
-        return data.index == _index;
-    }
-    return false;
+    return object == self;
 }
 
-- (BOOL)isEqual:(id)other {
-    if (other == self) {
-        return YES;
-    } else if (![super isEqual:other]) {
-        return NO;
-    } else {
-        return NO;
-    }
+@end
+
+
+@implementation CustomData
+
+- (nonnull id<NSObject>)diffIdentifier {
+    return self;
 }
 
+- (BOOL)isEqualToDiffableObject:(nullable id<IGListDiffable>)object {
+    return object == self;
+}
 
 @end
