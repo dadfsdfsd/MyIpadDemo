@@ -78,7 +78,6 @@ typedef NS_ENUM(NSInteger, IGListDiffingSectionState) {
 
         [tmpViewModels removeObjectsAtIndexes:result.deletes];
 
-        
         NSMutableArray *needInsertObjects = [NSMutableArray new];
         [result.inserts enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
             [needInsertObjects addObject:viewModels[idx]];
@@ -143,7 +142,16 @@ typedef NS_ENUM(NSInteger, IGListDiffingSectionState) {
     if (oldObject == nil) {
         self.viewModels = [self.dataSource sectionController:self viewModelsForObject:object];
     } else {
-        [self updateAnimated:YES completion:nil];
+        if ([self.object conformsToProtocol:@protocol(IGListDiffable)] && [oldObject conformsToProtocol:@protocol(IGListDiffable)]) {
+            id<IGListDiffable> diffableObject = self.object;
+            id<IGListDiffable> diffableOldObject = oldObject;
+            if (![diffableObject isEqualToDiffableObject:diffableOldObject]) {
+                 [self updateAnimated:YES completion:nil];
+            }
+        }
+        else {
+            [self updateAnimated:YES completion:nil];
+        }
     }
     if ([object isKindOfClass:[BaseSectionModel class]]) {
         BaseSectionModel *sectionModel = (BaseSectionModel *)object;

@@ -27,8 +27,8 @@
     }
     BaseSectionModel *sectionModel = (BaseSectionModel *)object;
     if ([sectionModel isKindOfClass:[BaseSectionModel class]]) {
-        BOOL a = [[sectionModel.headerCell.class cellIdentifier] isEqualToString:[self.headerCell.class cellIdentifier]] || (sectionModel.headerCell == nil && self.headerCell == nil);
-        BOOL b = ([[sectionModel.footerCell.class cellIdentifier] isEqualToString:[self.footerCell.class cellIdentifier]]|| (sectionModel.footerCell == nil && self.footerCell == nil));
+        BOOL a = [sectionModel.headerCell isEqualToDiffableObject:self.headerCell] || (sectionModel.headerCell == nil && self.headerCell == nil);
+        BOOL b = [sectionModel.footerCell isEqualToDiffableObject:self.footerCell] || (sectionModel.footerCell == nil && self.footerCell == nil);
         return sectionModel.diffIdentifier == self.diffIdentifier && b && a;
     }
     return false;
