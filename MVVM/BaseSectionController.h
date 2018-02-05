@@ -10,7 +10,7 @@
 #import <IGListKit/IGListKit.h>
 #import "BaseSectionModel.h"
 
-@interface BaseSectionController : IGListBindingSectionController<BaseCellModel *><IGListBindingSectionControllerDataSource>
+@interface BaseSectionController : IGListBindingSectionController<id<BaseCellModel>><IGListBindingSectionControllerDataSource>
 
 - (instancetype)initWithCellModelToCell:(NSDictionary<NSString *, Class> *)dictionary selectionDelegate:(id<IGListBindingSectionControllerSelectionDelegate>)delegate;
 

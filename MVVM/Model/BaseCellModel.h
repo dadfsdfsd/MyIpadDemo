@@ -10,7 +10,18 @@
 #import <UIKit/UIKit.h>
 #import <IGListKit/IGListKit.h>
 
-@interface BaseCellModel : NSObject<IGListDiffable>
+@protocol BaseCellModel<NSObject, IGListDiffable>
+
++ (NSString *)cellIdentifier;
+
+- (CGSize)calculateSizeForContainerSize:(CGSize) containerSize;
+
+- (CGSize)expectedSizeForContainerSize:(CGSize) containerSize;
+
+@end
+
+
+@interface BaseCellModel : NSObject<BaseCellModel>
 
 @property (nonatomic, assign, readonly) CGSize cachedSize;
 

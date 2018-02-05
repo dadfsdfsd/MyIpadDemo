@@ -10,11 +10,11 @@
 
 @implementation BaseSectionModel
 
-+ (instancetype)sectionModelWithCellModels:(NSArray<BaseCellModel *> *)cellModels {
++ (instancetype)sectionModelWithCellModels:(NSArray<id<BaseCellModel>> *)cellModels {
     return [[self alloc] initWithCellModels:cellModels];
 }
 
-- (instancetype)initWithCellModels:(NSArray<BaseCellModel *> *)cellModels {
+- (instancetype)initWithCellModels:(NSArray<id<BaseCellModel>> *)cellModels {
     if (self = [super init]) {
         _cellModels = cellModels;
     }
@@ -27,7 +27,6 @@
     }
     BaseSectionModel *sectionModel = (BaseSectionModel *)object;
     if ([sectionModel isKindOfClass:[BaseSectionModel class]]) {
-
         BOOL(^isHeaderCellEqual)(void) = ^(void) {
             return (BOOL)([sectionModel.headerCell isEqualToDiffableObject:self.headerCell] || (sectionModel.headerCell == nil && self.headerCell == nil));
         };

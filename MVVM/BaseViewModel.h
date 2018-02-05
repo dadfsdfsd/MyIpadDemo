@@ -53,7 +53,7 @@ typedef void (^BaseViewModelUpdaterCompletion)(BOOL finished, NSArray<BaseSectio
 
 - (BaseSectionModel *)sectionModelAtIndex:(NSInteger)index;
 
-- (BaseCellModel *)cellModelAtIndexPath:(NSIndexPath *)indexPath;
+- (id<BaseCellModel>)cellModelAtIndexPath:(NSIndexPath *)indexPath;
 
 
 //need override

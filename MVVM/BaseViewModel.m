@@ -90,7 +90,7 @@
     return nil;
 }
 
-- (BaseCellModel *)cellModelAtIndexPath:(NSIndexPath *)indexPath {
+- (id<BaseCellModel>)cellModelAtIndexPath:(NSIndexPath *)indexPath {
     BaseSectionModel *sectionModel = [self sectionModelAtIndex:indexPath.section];
     if (sectionModel && indexPath.row < sectionModel.cellModels.count) {
         return sectionModel.cellModels[indexPath.row];

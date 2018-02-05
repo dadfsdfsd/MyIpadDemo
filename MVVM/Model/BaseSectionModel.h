@@ -24,11 +24,11 @@
 
 @property (nonatomic, assign) CGFloat minimumInteritemSpacing;
 
-@property (nonatomic, strong) BaseCellModel *headerCell;
+@property (nonatomic, strong) id<BaseCellModel> headerCell;
 
-@property (nonatomic, strong) BaseCellModel *footerCell;
+@property (nonatomic, strong) id<BaseCellModel> footerCell;
 
-+ (instancetype)sectionModelWithCellModels:(NSArray<BaseCellModel *> *)cellModels;
++ (instancetype)sectionModelWithCellModels:(NSArray<id<BaseCellModel>> *)cellModels;
 
 - (void)didExitWorkingRange;
 

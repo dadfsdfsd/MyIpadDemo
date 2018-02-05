@@ -116,14 +116,14 @@ typedef NS_ENUM(NSInteger, IGListDiffingSectionState) {
 }
 
 - (nonnull UICollectionViewCell<IGListBindable> *)sectionController:(nonnull IGListBindingSectionController *)sectionController cellForViewModel:(nonnull id)viewModel atIndex:(NSInteger)index {
-    BaseCellModel *cellModel = (BaseCellModel *)viewModel;
+    id<BaseCellModel> cellModel = (id<BaseCellModel>)viewModel;
     BaseCollectionViewCell *collectionViewCell = [self.collectionContext dequeueReusableCellOfClass:_cellModel2Cell[[cellModel.class cellIdentifier]] forSectionController:self atIndex:index];
     collectionViewCell.delegate = self;
     return (UICollectionViewCell<IGListBindable> *)collectionViewCell;
 }
 
 - (CGSize)sectionController:(nonnull IGListBindingSectionController *)sectionController sizeForViewModel:(nonnull id)viewModel atIndex:(NSInteger)index {
-    BaseCellModel *cellModel = (BaseCellModel *)viewModel;
+    id<BaseCellModel> cellModel = (id<BaseCellModel>)viewModel;
     return [cellModel expectedSizeForContainerSize:self.collectionContext.containerSize];
 }
 
