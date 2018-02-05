@@ -27,12 +27,33 @@
     }
     BaseSectionModel *sectionModel = (BaseSectionModel *)object;
     if ([sectionModel isKindOfClass:[BaseSectionModel class]]) {
-        BOOL a = [sectionModel.headerCell isEqualToDiffableObject:self.headerCell] || (sectionModel.headerCell == nil && self.headerCell == nil);
-        BOOL b = [sectionModel.footerCell isEqualToDiffableObject:self.footerCell] || (sectionModel.footerCell == nil && self.footerCell == nil);
-        return sectionModel.diffIdentifier == self.diffIdentifier && b && a;
+
+        BOOL(^isHeaderCellEqual)(void) = ^(void) {
+            return (BOOL)([sectionModel.headerCell isEqualToDiffableObject:self.headerCell] || (sectionModel.headerCell == nil && self.headerCell == nil));
+        };
+        
+        BOOL(^isFooterCellEqual)(void) = ^(void) {
+            return (BOOL)([sectionModel.footerCell isEqualToDiffableObject:self.footerCell] || (sectionModel.footerCell == nil && self.footerCell == nil));
+        };
+ 
+        BOOL(^isCellsEqual)(void) = ^(void) {
+            BOOL result = sectionModel.cellModels.count == self.cellModels.count;
+            if (result) {
+                for (NSInteger i = 0; i < self.cellModels.count; i++) {
+                    if (![self.cellModels[i] isEqualToDiffableObject:sectionModel.cellModels[i]]) {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+            return result;
+        };
+        
+        return isHeaderCellEqual() && isFooterCellEqual() && isCellsEqual();
     }
     return false;
 }
+
 
 - (id<NSObject>)diffIdentifier {
     if (_diffIdentifier) {
