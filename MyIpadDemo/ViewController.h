@@ -11,5 +11,8 @@
 @interface ViewController : UIViewController
 
 
++ (instancetype)test:(NSString *)inOtherButtonItems, ... NS_REQUIRES_NIL_TERMINATION;
+
+
 @end
 

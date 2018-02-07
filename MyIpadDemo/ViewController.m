@@ -29,12 +29,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 50, 50)];
     [button addTarget:self action:@selector(onTapButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     button.backgroundColor = [UIColor redColor];
-   
+    [ViewController test:@"sdf", nil];
     [self test];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"" message:@"1" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:nil];
+        [ac addAction:alertAction];
+        [self presentViewController:ac animated:true completion:nil];
+    });
 }
 
 - (void)test {
@@ -76,6 +85,24 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
++(instancetype)test:(NSString *)inOtherButtonItems, ... {
+    va_list argumentList;
+    
+    NSMutableArray *array = [NSMutableArray new];
+    NSString *eachItem = nil;
+    
+    if (inOtherButtonItems)
+    {
+        va_start(argumentList, inOtherButtonItems);
+        while((eachItem = va_arg(argumentList, NSString *)))
+        {
+            [array addObject: eachItem];
+        }
+        va_end(argumentList);
+    }
+    return [ViewController new];
 }
 
 

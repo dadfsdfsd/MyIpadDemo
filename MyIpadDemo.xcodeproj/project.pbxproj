@@ -45,6 +45,7 @@
 		3C70F68120030EA700D2082B /* BaseSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70F67E20030EA700D2082B /* BaseSectionModel.m */; };
 		3C70F68420030EF200D2082B /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70F68220030EF200D2082B /* BaseViewModel.m */; };
 		3C70F68720030FAB00D2082B /* BaseSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C70F68620030FAB00D2082B /* BaseSectionController.m */; };
+		3CB5C35B202AEE5C00414BF8 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB5C35A202AEE5C00414BF8 /* TabBarViewController.m */; };
 		3CD3E8BC1FFF6B39008E1621 /* BaseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD3E8BB1FFF6B39008E1621 /* BaseCollectionViewController.m */; };
 		F6AAEF93A417A3277891FC04 /* libPods-MyIpadDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6921DED9B2291E34E7B5B570 /* libPods-MyIpadDemo.a */; };
 /* End PBXBuildFile section */
@@ -144,6 +145,8 @@
 		3C70F68320030EF200D2082B /* BaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
 		3C70F68520030FAB00D2082B /* BaseSectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseSectionController.h; sourceTree = "<group>"; };
 		3C70F68620030FAB00D2082B /* BaseSectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseSectionController.m; sourceTree = "<group>"; };
+		3CB5C359202AEE5C00414BF8 /* TabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		3CB5C35A202AEE5C00414BF8 /* TabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		3CD3E8BA1FFF6B39008E1621 /* BaseCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewController.h; sourceTree = "<group>"; };
 		3CD3E8BB1FFF6B39008E1621 /* BaseCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewController.m; sourceTree = "<group>"; };
 		6921DED9B2291E34E7B5B570 /* libPods-MyIpadDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyIpadDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,13 +228,9 @@
 		3C4AD0871FFC87D700871172 /* MyIpadDemo */ = {
 			isa = PBXGroup;
 			children = (
+				3CB5C352202AEC9C00414BF8 /* Base */,
+				3CB5C351202AEC6600414BF8 /* CommonTest */,
 				3C1D71622003499200F42FFC /* MVVMTest */,
-				3C4AD0CA1FFCCC7C00871172 /* SelectTableViewCell.h */,
-				3C4AD0CB1FFCCC7C00871172 /* SelectTableViewCell.m */,
-				3C4AD0C71FFCC88900871172 /* SelectViewController.h */,
-				3C4AD0C81FFCC88900871172 /* SelectViewController.m */,
-				3C4AD0C41FFCC64600871172 /* ColorViewController.h */,
-				3C4AD0C51FFCC64600871172 /* ColorViewController.m */,
 				3C4AD0C11FFCC36D00871172 /* FirstViewController.h */,
 				3C4AD0C21FFCC36D00871172 /* FirstViewController.m */,
 				3C4AD0881FFC87D700871172 /* AppDelegate.h */,
@@ -332,6 +331,28 @@
 				3C4146702019B5F3006CF4CA /* BaseDataStore.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3CB5C351202AEC6600414BF8 /* CommonTest */ = {
+			isa = PBXGroup;
+			children = (
+				3C4AD0CA1FFCCC7C00871172 /* SelectTableViewCell.h */,
+				3C4AD0CB1FFCCC7C00871172 /* SelectTableViewCell.m */,
+				3C4AD0C71FFCC88900871172 /* SelectViewController.h */,
+				3C4AD0C81FFCC88900871172 /* SelectViewController.m */,
+				3C4AD0C41FFCC64600871172 /* ColorViewController.h */,
+				3C4AD0C51FFCC64600871172 /* ColorViewController.m */,
+			);
+			path = CommonTest;
+			sourceTree = "<group>";
+		};
+		3CB5C352202AEC9C00414BF8 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3CB5C359202AEE5C00414BF8 /* TabBarViewController.h */,
+				3CB5C35A202AEE5C00414BF8 /* TabBarViewController.m */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		40256A3FC739CA95A7F5E387 /* Frameworks */ = {
@@ -571,6 +592,7 @@
 				3C70F68120030EA700D2082B /* BaseSectionModel.m in Sources */,
 				3C49F0C820187C3D004E07A1 /* NMHitTestButton.m in Sources */,
 				3C4D687B20216EFB0005D535 /* DynamicObservable.m in Sources */,
+				3CB5C35B202AEE5C00414BF8 /* TabBarViewController.m in Sources */,
 				3C70F67F20030EA700D2082B /* BaseCellModel.m in Sources */,
 				3CD3E8BC1FFF6B39008E1621 /* BaseCollectionViewController.m in Sources */,
 				3C4D6881202192540005D535 /* ObservationManager.m in Sources */,
