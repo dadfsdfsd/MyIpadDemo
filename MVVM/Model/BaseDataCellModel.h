@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) DataType data;
 
-- (instancetype) initWithData:(DataType) data;
+- (instancetype)initWithData:(DataType)data;
+
+- (void)didLoadData;
 
 @end

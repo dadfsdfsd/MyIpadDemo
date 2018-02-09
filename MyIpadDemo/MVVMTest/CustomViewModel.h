@@ -13,4 +13,6 @@
 
 - (void)doMove;
 
+- (void)doInsetAndDelete;
+
 @end

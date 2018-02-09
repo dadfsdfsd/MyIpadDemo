@@ -7,6 +7,7 @@
 //
 
 #import "CustomCellModel.h"
+#import "NSObject+ObservationManager.h"
 
 @implementation CustomCellModel
 
@@ -16,9 +17,10 @@
     return CGSizeMake((containerSize.width - 40)/2, 50);
 }
 
-//- (BOOL)isEqualToDiffableObject:(id<IGListDiffable>)object {
-//
-//    return [super isEqualToDiffableObject:object] && [self.backgroundColor isEqual:[(CustomCellModel *)object backgroundColor]];
-//}
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+    self.data.backgroundColor = backgroundColor;
+}
+
+
 
 @end

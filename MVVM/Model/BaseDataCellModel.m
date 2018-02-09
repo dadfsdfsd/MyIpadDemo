@@ -8,7 +8,6 @@
 
 #import "BaseDataCellModel.h"
 
-
 @implementation BaseDataCellModel
 
 - (instancetype)initWithData:(id)data {
@@ -24,7 +23,6 @@
         [self didLoadData];
     }
 }
-
 
 - (void)didLoadData {
     

@@ -32,9 +32,10 @@
         label;
     });
     
-    [self.contentView addSubview:_titleLabe];
+    self.layer.borderColor = [UIColor blackColor].CGColor;
+    self.layer.borderWidth = 1;
     
-//    self.backgroundColor = [UIColor redColor];
+    [self.contentView addSubview:_titleLabe];
 }
 
 - (void)layoutSubviews {
@@ -50,11 +51,11 @@
     if ([customCellModel isKindOfClass:[CustomCellModel class]]) {
         _titleLabe.text = [NSString stringWithFormat:@"%ld", (long)customCellModel.data.index];
         __weak __typeof(self) weakSelf = self;
-        [[self observationManager] observe:[[DynamicObservable<UIColor *> alloc] initWithTarget:customCellModel keyPath:@"backgroundColor" shouldRetainTarget:true] withEventHandler:^(ValueChange<UIColor *> *change) {
+        [[self observationManager] observe:[[DynamicObservable<UIColor *> alloc] initWithTarget:customCellModel keyPath:@"data.backgroundColor" shouldRetainTarget:true] withEventHandler:^(ValueChange<UIColor *> *change) {
             UIColor *newColor = change.nValue;
             weakSelf.backgroundColor = newColor;
         }];
-        self.backgroundColor = customCellModel.backgroundColor;
+        self.backgroundColor = customCellModel.data.backgroundColor;
     }
 }
 

@@ -219,7 +219,7 @@
                     sectionModels[idx].cellModels = [sectionController.viewModels copy];
                 }
                 else {
-                    NSLog(@"Error: SectionController must be BaseSectionController Or unknown error");
+                    NSLog(@"Error: SectionController must be kind of BaseSectionController or unknown error");
                 }
             }];
             completion(true, sectionModels);

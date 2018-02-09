@@ -68,7 +68,7 @@
 
 - (void)reload:(BOOL)aniamted {
     __weak __typeof(self) weakSelf = self;
-    [self performUpdatesAnimated:false completion:^(BOOL finished, NSArray<BaseSectionModel *> *sectionModels) {
+    [self performUpdatesAnimated:aniamted completion:^(BOOL finished, NSArray<BaseSectionModel *> *sectionModels) {
         if (finished) {
             weakSelf.sectionModels = sectionModels;
         }

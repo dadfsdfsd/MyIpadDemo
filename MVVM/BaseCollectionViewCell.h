@@ -19,3 +19,14 @@
 - (void)bindCellModel:(id)cellModel;
 
 @end
+
+
+
+
+
+
+
+
+
+
+

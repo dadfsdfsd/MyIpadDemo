@@ -11,6 +11,7 @@
 #import "CustomLoadingCellModel.h"
 #import "CustomCollectionViewCell.h"
 #import "CustomLoadingCollectionViewCell.h"
+#import "UIColor+EX.h"
  
 
 @implementation CustomCollectionViewController
@@ -41,7 +42,7 @@
     if ([viewModel isKindOfClass:[CustomCellModel class]]) {
 
         CustomCellModel *cellModel = (CustomCellModel *)viewModel;
-        cellModel.backgroundColor = [UIColor purpleColor];
+        cellModel.backgroundColor = [UIColor randomColor];
         
         CustomCellModel *cellModel2 =  (CustomCellModel *)[[self viewModel] cellModelAtIndexPath:[NSIndexPath indexPathForRow:index inSection:sectionController.section]];
         
@@ -55,7 +56,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"doMove" style:UIBarButtonItemStyleDone target:self action:@selector(doMove)];
+    UIBarButtonItem *moveButton = [[UIBarButtonItem alloc] initWithTitle:@"move" style:UIBarButtonItemStyleDone target:self action:@selector(doMove)];
+    UIBarButtonItem *insertAndDeleteButton = [[UIBarButtonItem alloc] initWithTitle:@"doInsert&Delete" style:UIBarButtonItemStyleDone target:self action:@selector(doInsertAndDelete)];
+    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:@"reload" style:UIBarButtonItemStyleDone target:self action:@selector(doReload)];
+    
+    self.navigationItem.rightBarButtonItems = @[moveButton, insertAndDeleteButton, reloadButton];
 }
 
 - (void)doMove {
@@ -63,5 +68,14 @@
     [viewModel doMove];
 }
 
+- (void)doInsertAndDelete {
+    CustomViewModel *viewModel = [self viewModel];
+    [viewModel doInsetAndDelete];
+}
+
+- (void)doReload {
+    CustomViewModel *viewModel = [self viewModel];
+    [viewModel reload:true];
+}
 
 @end
