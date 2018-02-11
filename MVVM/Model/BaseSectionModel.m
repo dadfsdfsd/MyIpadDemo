@@ -16,9 +16,16 @@
 
 - (instancetype)initWithCellModels:(NSArray<id<BaseCellModel>> *)cellModels {
     if (self = [super init]) {
-        _cellModels = cellModels;
+        self.cellModels = cellModels;
     }
     return self;
+}
+
+- (void)setCellModels:(NSArray<id<BaseCellModel>> *)cellModels {
+    _cellModels = cellModels;
+    [_cellModels enumerateObjectsUsingBlock:^(id<BaseCellModel> _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.container = self;
+    }];
 }
 
 - (BOOL)isEqualToDiffableObject:(id<IGListDiffable>)object {
@@ -53,6 +60,9 @@
     return false;
 }
 
+-(void)updateAnimated:(BOOL)animated onlySize:(BOOL)onlySize {
+    [_delegate updateAnimated:animated onlySize:onlySize];
+}
 
 - (id<NSObject>)diffIdentifier {
     if (_diffIdentifier) {

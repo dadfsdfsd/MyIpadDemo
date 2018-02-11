@@ -11,10 +11,17 @@
 #import <IGListKit/IGListKit.h>
 #import "BaseCellModel.h"
 
+@protocol BaseSectionModelDelegate
 
-@interface BaseSectionModel : NSObject<IGListDiffable>
+-(void)updateAnimated:(BOOL)animated onlySize:(BOOL)onlySize;
 
-@property (nonatomic, strong) NSArray<BaseCellModel*>* cellModels;
+@end
+
+@interface BaseSectionModel : NSObject<IGListDiffable, BaseCellModelContainer>
+
+@property (nonatomic, weak) id<BaseSectionModelDelegate> delegate;
+
+@property (nonatomic, strong) NSArray<id<BaseCellModel>>* cellModels;
 
 @property (nonatomic, strong) id<NSObject> diffIdentifier;
 

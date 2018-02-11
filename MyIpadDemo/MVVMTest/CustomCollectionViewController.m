@@ -12,16 +12,24 @@
 #import "CustomCollectionViewCell.h"
 #import "CustomLoadingCollectionViewCell.h"
 #import "UIColor+EX.h"
+#import <ReactiveObjC.h>
  
 
-@implementation CustomCollectionViewController
+@implementation CustomCollectionViewController {
+    
+    UIButton *_button;
+}
 
 - (BaseViewModel *)loadViewModel {
     return [CustomViewModel new];
 }
 
-- (void)bindViewModel:(BaseViewModel *)viewModel {
+- (void)bindViewModel:(CustomViewModel *)viewModel {
     [super bindViewModel:viewModel];
+    
+//    [[_button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+//        [viewModel reload:false];
+//    }] ;
 }
 
 - (NSDictionary<NSString *, Class> *)cellModel2Cell {
@@ -54,28 +62,33 @@
 }
 
 - (void)viewDidLoad {
+    _button = [UIButton new];
+    _button.backgroundColor = [UIColor redColor];
+    _button.frame = CGRectMake(100, 100, 100, 100);
+    
     [super viewDidLoad];
+    [self.view addSubview:_button];
     
-    UIBarButtonItem *moveButton = [[UIBarButtonItem alloc] initWithTitle:@"move" style:UIBarButtonItemStyleDone target:self action:@selector(doMove)];
-    UIBarButtonItem *insertAndDeleteButton = [[UIBarButtonItem alloc] initWithTitle:@"doInsert&Delete" style:UIBarButtonItemStyleDone target:self action:@selector(doInsertAndDelete)];
-    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:@"reload" style:UIBarButtonItemStyleDone target:self action:@selector(doReload)];
-    
-    self.navigationItem.rightBarButtonItems = @[moveButton, insertAndDeleteButton, reloadButton];
+//    UIBarButtonItem *moveButton = [[UIBarButtonItem alloc] initWithTitle:@"move" style:UIBarButtonItemStyleDone target:self action:@selector(doMove)];
+//    UIBarButtonItem *insertAndDeleteButton = [[UIBarButtonItem alloc] initWithTitle:@"doInsert&Delete" style:UIBarButtonItemStyleDone target:self action:@selector(doInsertAndDelete)];
+//    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:@"reload" style:UIBarButtonItemStyleDone target:self action:@selector(doReload)];
+//
+//    self.navigationItem.rightBarButtonItems = @[moveButton, insertAndDeleteButton, reloadButton];
 }
 
-- (void)doMove {
-    CustomViewModel *viewModel = [self viewModel];
-    [viewModel doMove];
-}
-
-- (void)doInsertAndDelete {
-    CustomViewModel *viewModel = [self viewModel];
-    [viewModel doInsetAndDelete];
-}
-
-- (void)doReload {
-    CustomViewModel *viewModel = [self viewModel];
-    [viewModel reload:true];
-}
+//- (void)doMove {
+//    CustomViewModel *viewModel = [self viewModel];
+//    [viewModel doMove];
+//}
+//
+//- (void)doInsertAndDelete {
+//    CustomViewModel *viewModel = [self viewModel];
+//    [viewModel doInsetAndDelete];
+//}
+//
+//- (void)doReload {
+//    CustomViewModel *viewModel = [self viewModel];
+//    [viewModel reload:true];
+//}
 
 @end

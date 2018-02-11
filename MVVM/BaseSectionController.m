@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, IGListDiffingSectionState) {
 };
 
 
-@interface IGListBindingSectionController()<IGListSupplementaryViewSource, IGListWorkingRangeDelegate>
+@interface IGListBindingSectionController()<IGListSupplementaryViewSource, IGListWorkingRangeDelegate, BaseSectionModelDelegate>
 
 @property (nonatomic, strong, readwrite) NSArray<id<IGListDiffable>> *viewModels;
 
@@ -27,6 +27,16 @@ typedef NS_ENUM(NSInteger, IGListDiffingSectionState) {
 @end
 
 @implementation BaseSectionController
+
+- (void)updateAnimated:(BOOL)animated onlySize:(BOOL)onlySize {
+    if (onlySize) {
+        [self.collectionContext performBatchAnimated:animated updates:^(id<IGListBatchContext>  _Nonnull batchContext) {
+        } completion:nil];
+    }
+    else {
+        [self updateAnimated:animated completion:nil];
+    }
+}
 
 - (void)updateAnimated:(BOOL)animated completion:(void (^)(BOOL))completion {
     IGAssertMainThread();
@@ -62,8 +72,7 @@ typedef NS_ENUM(NSInteger, IGListDiffingSectionState) {
             id identifier = [oldViewModels[oldUpdatedIndex] diffIdentifier];
             const NSInteger indexAfterUpdate = [result newIndexForIdentifier:identifier];
             if (indexAfterUpdate != NSNotFound) {
-                UICollectionViewCell<IGListBindable> *cell = [collectionContext cellForItemAtIndex:oldUpdatedIndex
-                                                                                 sectionController:self];
+                UICollectionViewCell<IGListBindable> *cell = [collectionContext cellForItemAtIndex:oldUpdatedIndex sectionController:self];
                 [cell bindViewModel:viewModels[indexAfterUpdate]];
                 [tmpViewModels replaceObjectAtIndex:oldUpdatedIndex withObject:viewModels[indexAfterUpdate]];
             }
@@ -123,13 +132,17 @@ typedef NS_ENUM(NSInteger, IGListDiffingSectionState) {
 }
 
 - (CGSize)sectionController:(nonnull IGListBindingSectionController *)sectionController sizeForViewModel:(nonnull id)viewModel atIndex:(NSInteger)index {
-    id<BaseCellModel> cellModel = (id<BaseCellModel>)viewModel;
-    return [cellModel expectedSizeForContainerSize:self.collectionContext.containerSize];
+    if ([self.object isKindOfClass:[BaseSectionModel class]]) {
+        BaseSectionModel *sectionModel = (BaseSectionModel *)self.object;
+        id<BaseCellModel> cellModel = (id<BaseCellModel>)viewModel;
+        return [cellModel expectedSizeForContainerWidth:self.collectionContext.containerSize.width - sectionModel.inset.left - sectionModel.inset.right];
+    }
+    return CGSizeZero;
 }
 
 - (nonnull NSArray<id<IGListDiffable>> *)sectionController:(nonnull IGListBindingSectionController *)sectionController viewModelsForObject:(nonnull id)object {
     if ([object isKindOfClass:[BaseSectionModel class]]) {
-        BaseSectionModel *sectionModel = (BaseSectionModel *) object;
+        BaseSectionModel *sectionModel = (BaseSectionModel *)object;
         return sectionModel.cellModels;
     }
     return [NSArray<id<IGListDiffable>> new];
@@ -155,6 +168,7 @@ typedef NS_ENUM(NSInteger, IGListDiffingSectionState) {
     }
     if ([object isKindOfClass:[BaseSectionModel class]]) {
         BaseSectionModel *sectionModel = (BaseSectionModel *)object;
+        sectionModel.delegate = self;
         self.inset = sectionModel.inset;
         self.minimumInteritemSpacing = sectionModel.minimumInteritemSpacing;
         self.minimumLineSpacing = sectionModel.minimumLineSpacing;
@@ -165,10 +179,10 @@ typedef NS_ENUM(NSInteger, IGListDiffingSectionState) {
     if ([self.object isKindOfClass:[BaseSectionModel class]]) {
         BaseSectionModel *sectionModel = (BaseSectionModel *)self.object;
         if (elementKind == UICollectionElementKindSectionHeader && sectionModel.headerCell != nil) {
-            return [sectionModel.headerCell expectedSizeForContainerSize:self.collectionContext.containerSize];
+            return [sectionModel.headerCell expectedSizeForContainerWidth:self.collectionContext.containerSize.width - sectionModel.inset.left - sectionModel.inset.right];
         }
         else if (elementKind == UICollectionElementKindSectionFooter && sectionModel.footerCell != nil) {
-            return [sectionModel.footerCell expectedSizeForContainerSize:self.collectionContext.containerSize];
+            return [sectionModel.footerCell expectedSizeForContainerWidth:self.collectionContext.containerSize.width - sectionModel.inset.left - sectionModel.inset.right];
         }
     }
     return CGSizeZero;

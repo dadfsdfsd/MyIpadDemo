@@ -10,13 +10,23 @@
 #import <UIKit/UIKit.h>
 #import <IGListKit/IGListKit.h>
 
+@protocol BaseCellModelContainer<NSObject>
+
+-(void)updateAnimated:(BOOL)animated onlySize:(BOOL)onlySize;
+
+@end
+
 @protocol BaseCellModel<NSObject, IGListDiffable>
 
 + (NSString *)cellIdentifier;
 
-- (CGSize)calculateSizeForContainerSize:(CGSize) containerSize;
+- (CGSize)calculateSizeForContainerWidth:(CGFloat) containerWidth;
 
-- (CGSize)expectedSizeForContainerSize:(CGSize) containerSize;
+- (CGSize)expectedSizeForContainerWidth:(CGFloat) containerWidth;
+
+- (id<BaseCellModelContainer>)container;
+
+- (void)setContainer:(id<BaseCellModelContainer>)container;
 
 @end
 
@@ -25,12 +35,16 @@
 
 @property (nonatomic, assign, readonly) CGSize cachedSize;
 
+@property (nonatomic, weak) id<BaseCellModelContainer> container;
+
+- (void)clearCachedSize;
+
 + (NSString *)cellIdentifier;
 
 //need override
-- (CGSize)calculateSizeForContainerSize:(CGSize) containerSize;
+- (CGSize)calculateSizeForContainerWidth:(CGFloat) containerWidth;
 
-- (CGSize)expectedSizeForContainerSize:(CGSize) containerSize;
+- (CGSize)expectedSizeForContainerWidth:(CGFloat) containerWidth;
 
 
 @end

@@ -12,8 +12,6 @@
 @implementation CustomDataModel {
     
     BaseDataStore *_dataStore;
-    
-    KeyValueStore *_keyValueStore;
 
 }
 
@@ -21,11 +19,9 @@
     if (self = [super init]) {
         NSString *path = @"nothing";
         _dataStore = [[BaseDataStore alloc] initWithPath:path];
-        _keyValueStore = [_dataStore keyValueStore];
     }
     return self;
 }
-
 
 - (void)updateDataItemAtIndex:(NSInteger)index withCompletion:(CustomDataModelUpdaterCompletion)completion {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{;

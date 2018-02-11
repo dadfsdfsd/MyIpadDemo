@@ -17,8 +17,8 @@
     return self;
 }
 
-- (KeyValueStore *)keyValueStore {
-    return nil;
+- (YYDiskCache *)diskCache {
+    return [[YYDiskCache alloc] initWithPath:_path];
 }
 
 @end

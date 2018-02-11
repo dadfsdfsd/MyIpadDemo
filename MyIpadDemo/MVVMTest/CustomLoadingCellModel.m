@@ -10,9 +10,8 @@
 
 @implementation CustomLoadingCellModel
 
-
-- (CGSize)expectedSizeForContainerSize:(CGSize)containerSize {
-    return CGSizeMake(containerSize.width, 80);
+- (CGSize)expectedSizeForContainerWidth:(CGFloat)containerWidth {
+    return CGSizeMake(containerWidth, 200);
 }
 
 @end

@@ -23,6 +23,19 @@
 
 @implementation CustomData
 
+- (instancetype)init {
+    if (self = [super init]) {
+        NSInteger repeatCount = random()%100;
+        NSString *base = @"这是一个字符串";
+        NSMutableString *string = [NSMutableString string];
+        for (NSInteger i = 0; i < repeatCount; i++) {
+            [string appendString:base];
+        }
+        self.content = [string copy];
+    }
+    return self;
+}
+
 - (nonnull id<NSObject>)diffIdentifier {
     return self;
 }

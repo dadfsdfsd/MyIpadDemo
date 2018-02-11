@@ -8,9 +8,20 @@
 
 #import "BaseDataCellModel.h"
 #import "CustomData.h"
+#import <YYKit.h>
 
 @interface CustomCellModel : BaseDataCellModel<CustomData *>
 
 @property (nonatomic, strong) UIColor *backgroundColor;
+
+@property (nonatomic, strong) YYTextLayout *textLayout;
+
+@property (nonatomic, assign) CGFloat textContentPadding;
+
+@property (nonatomic, assign) CGFloat buttonPadding;
+
+@property (nonatomic, assign) CGSize buttonSize;
+
+- (void)doChangeContent;
 
 @end

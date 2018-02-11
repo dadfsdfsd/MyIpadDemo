@@ -20,16 +20,16 @@
     return NSStringFromClass(self);
 }
 
-- (CGSize)expectedSizeForContainerSize:(CGSize)containerSize {
+- (CGSize)expectedSizeForContainerWidth:(CGFloat)containerWidth {
     if (_hasCalculatedSize) {
         return _cachedSize;
     }
-    _cachedSize = [self calculateSizeForContainerSize:containerSize];
+    _cachedSize = [self calculateSizeForContainerWidth:containerWidth];
     _hasCalculatedSize = true;
     return _cachedSize;
 }
 
-- (CGSize)calculateSizeForContainerSize:(CGSize)containerSize {
+- (CGSize)calculateSizeForContainerWidth:(CGFloat)containerWidth {
     return CGSizeZero;
 }
 

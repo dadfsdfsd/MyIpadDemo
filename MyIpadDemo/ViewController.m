@@ -38,12 +38,12 @@
     [ViewController test:@"sdf", nil];
     [self test];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"" message:@"1" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:nil];
-        [ac addAction:alertAction];
-        [self presentViewController:ac animated:true completion:nil];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"" message:@"1" preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:nil];
+//        [ac addAction:alertAction];
+//        [self presentViewController:ac animated:true completion:nil];
+//    });
 }
 
 - (void)test {

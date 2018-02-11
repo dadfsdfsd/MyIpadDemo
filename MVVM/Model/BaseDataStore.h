@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KeyValueStore.h"
+#import <YYKit.h>
 
 @interface BaseDataStore : NSObject
 
 @property(nonatomic, strong, readonly) NSString *path;
 
-- (KeyValueStore *)keyValueStore;
-
 - (instancetype)initWithPath:(NSString *)path;
+
+- (YYDiskCache *)diskCache;
 
 @end
