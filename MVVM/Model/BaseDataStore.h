@@ -7,10 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KeyValueStore.h"
 
 @interface BaseDataStore : NSObject
 
+@property(nonatomic, strong, readonly) NSString *path;
 
+- (KeyValueStore *)keyValueStore;
 
+- (instancetype)initWithPath:(NSString *)path;
 
 @end

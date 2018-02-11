@@ -7,10 +7,24 @@
 //
 
 #import "CustomDataModel.h"
+#import "BaseDataStore.h"
 
-@implementation CustomDataModel
+@implementation CustomDataModel {
+    
+    BaseDataStore *_dataStore;
+    
+    KeyValueStore *_keyValueStore;
 
+}
 
+- (instancetype)init {
+    if (self = [super init]) {
+        NSString *path = @"nothing";
+        _dataStore = [[BaseDataStore alloc] initWithPath:path];
+        _keyValueStore = [_dataStore keyValueStore];
+    }
+    return self;
+}
 
 
 - (void)updateDataItemAtIndex:(NSInteger)index withCompletion:(CustomDataModelUpdaterCompletion)completion {

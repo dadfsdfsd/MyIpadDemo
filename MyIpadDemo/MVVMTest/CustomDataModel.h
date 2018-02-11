@@ -15,6 +15,8 @@ typedef void (^CustomDataModelUpdaterCompletion)(BOOL finished, NSArray<CustomSe
 
 @property (nonatomic, strong) NSArray<CustomSectionData *> *dataItems;
 
+@property (nonatomic, retain) BOOL state;
+
 - (void)updateDataItemAtIndex:(NSInteger)index withCompletion:(CustomDataModelUpdaterCompletion)completion;
 
 @end

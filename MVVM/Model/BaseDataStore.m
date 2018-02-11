@@ -10,6 +10,15 @@
 
 @implementation BaseDataStore
 
+- (instancetype)initWithPath:(NSString *)path {
+    if (self = [self init]) {
+        _path = path;
+    }
+    return self;
+}
 
+- (KeyValueStore *)keyValueStore {
+    return nil;
+}
 
 @end
