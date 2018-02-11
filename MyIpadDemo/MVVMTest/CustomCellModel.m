@@ -17,6 +17,12 @@
     return CGSizeMake((containerSize.width - 40)/2, 50);
 }
 
+- (void)didLoadData {
+   
+    
+    
+}
+
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
     self.data.backgroundColor = backgroundColor;
 }

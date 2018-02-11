@@ -5,5 +5,6 @@ pod 'KVOController'
 pod 'MJRefresh'
 pod 'ReactiveObjC'
 pod 'BlocksKit'
+pod 'YYKit'
 
 end
