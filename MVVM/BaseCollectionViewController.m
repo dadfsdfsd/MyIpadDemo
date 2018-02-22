@@ -22,12 +22,20 @@
 
 @property (nonatomic, strong) NSArray<BaseSectionModel *> *tmpDatas;
 
+@property (nonatomic, strong) BaseViewModel *viewModelToBind;
+
 @end
 
-@implementation BaseCollectionViewController
+@implementation BaseCollectionViewController {
+    
+    BaseViewModel *_viewModel;
+    
+}
 
 
 - (void)loadView {
+    [super loadView];
+    
     _collectionView = [self loadCollectionView];
     _listAdapter = [self loadListAdapter];
     self.view = self.collectionView;
@@ -73,7 +81,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (self.viewModel == nil) {
+    if (_viewModelToBind) {
+        [self bindViewModel:_viewModelToBind];
+    }
+    else {
         [self bindViewModel:[self loadViewModel]];
     }
 }
@@ -107,10 +118,28 @@
     return nil;
 }
 
+- (void)setViewModel:(BaseViewModel *)viewModel {
+    if (self.isViewLoaded) {
+        [self bindViewModel:viewModel];
+    }
+    else {
+        _viewModelToBind = viewModel;
+    }
+}
+
+- (BaseViewModel *)viewModel {
+    if (_viewModelToBind) {
+        return _viewModelToBind;
+    }
+    return _viewModel;
+}
+
 - (void)bindViewModel:(BaseViewModel *)viewModel {
+    [self view];
     if (_viewModel == viewModel) {
         return;
     }
+    
     if (_viewModel) {
         [_viewModel removeObserver:self forKeyPath:@"state"];
     }
@@ -119,6 +148,7 @@
     }
     
     _viewModel = viewModel;
+    _viewModelToBind = nil;
     _viewModel.delegate = self;
     [_viewModel didBindViewController];
 }

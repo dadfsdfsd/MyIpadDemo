@@ -49,6 +49,7 @@
 		3C79D41A202D767E005DB0D8 /* UIColor+EX.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C79D419202D767E005DB0D8 /* UIColor+EX.m */; };
 		3C79D41E202F385F005DB0D8 /* KeyValueStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C79D41D202F385F005DB0D8 /* KeyValueStore.m */; };
 		3CB5C35B202AEE5C00414BF8 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB5C35A202AEE5C00414BF8 /* TabBarViewController.m */; };
+		3CBBC133203EC606000F841D /* BaseControllerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBBC132203EC606000F841D /* BaseControllerCollectionViewCell.m */; };
 		3CD3E8BC1FFF6B39008E1621 /* BaseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD3E8BB1FFF6B39008E1621 /* BaseCollectionViewController.m */; };
 		F6AAEF93A417A3277891FC04 /* libPods-MyIpadDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6921DED9B2291E34E7B5B570 /* libPods-MyIpadDemo.a */; };
 /* End PBXBuildFile section */
@@ -156,6 +157,9 @@
 		3C79D41D202F385F005DB0D8 /* KeyValueStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyValueStore.m; sourceTree = "<group>"; };
 		3CB5C359202AEE5C00414BF8 /* TabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		3CB5C35A202AEE5C00414BF8 /* TabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		3CBBC130203EC574000F841D /* MVVMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVVMViewController.h; sourceTree = "<group>"; };
+		3CBBC131203EC606000F841D /* BaseControllerCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseControllerCollectionViewCell.h; sourceTree = "<group>"; };
+		3CBBC132203EC606000F841D /* BaseControllerCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseControllerCollectionViewCell.m; sourceTree = "<group>"; };
 		3CD3E8BA1FFF6B39008E1621 /* BaseCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewController.h; sourceTree = "<group>"; };
 		3CD3E8BB1FFF6B39008E1621 /* BaseCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewController.m; sourceTree = "<group>"; };
 		6921DED9B2291E34E7B5B570 /* libPods-MyIpadDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyIpadDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,8 +206,8 @@
 				3C1D716920034E7600F42FFC /* CustomData.h */,
 				3C1D716A20034E7600F42FFC /* CustomData.m */,
 				3C1D716620034A0F00F42FFC /* CustomViewModel.h */,
-				3C1D716720034A0F00F42FFC /* CustomViewModel.m */,
 				3C1D7163200349CD00F42FFC /* CustomCollectionViewController.h */,
+				3C1D716720034A0F00F42FFC /* CustomViewModel.m */,
 				3C1D7164200349CD00F42FFC /* CustomCollectionViewController.m */,
 				3C047C00201B31BF0096F5D4 /* CustomLoadingCellModel.h */,
 				3C047C01201B31BF0096F5D4 /* CustomLoadingCellModel.m */,
@@ -283,8 +287,11 @@
 				3C5F5B122011DBC300A8764A /* Utils */,
 				3C70F68320030EF200D2082B /* BaseViewModel.h */,
 				3C70F68220030EF200D2082B /* BaseViewModel.m */,
+				3CBBC130203EC574000F841D /* MVVMViewController.h */,
 				3C1D716F200359BC00F42FFC /* BaseCollectionViewCell.h */,
 				3C1D7170200359BC00F42FFC /* BaseCollectionViewCell.m */,
+				3CBBC131203EC606000F841D /* BaseControllerCollectionViewCell.h */,
+				3CBBC132203EC606000F841D /* BaseControllerCollectionViewCell.m */,
 				3CD3E8BA1FFF6B39008E1621 /* BaseCollectionViewController.h */,
 				3CD3E8BB1FFF6B39008E1621 /* BaseCollectionViewController.m */,
 				3C70F68520030FAB00D2082B /* BaseSectionController.h */,
@@ -604,6 +611,7 @@
 				3C1D716820034A0F00F42FFC /* CustomViewModel.m in Sources */,
 				3C401F642022CA5700DF35F4 /* NSMutableArray+Move.m in Sources */,
 				3C4AD0CC1FFCCC7C00871172 /* SelectTableViewCell.m in Sources */,
+				3CBBC133203EC606000F841D /* BaseControllerCollectionViewCell.m in Sources */,
 				3C1D716B20034E7600F42FFC /* CustomData.m in Sources */,
 				3C70F68120030EA700D2082B /* BaseSectionModel.m in Sources */,
 				3C49F0C820187C3D004E07A1 /* NMHitTestButton.m in Sources */,

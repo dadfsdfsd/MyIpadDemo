@@ -62,7 +62,8 @@
 }
 
 - (void)onTapButton {
-    UIViewController *vc = [CustomCollectionViewController new];
+    CustomCollectionViewController *vc = [CustomCollectionViewController new];
+    vc.viewModel = [CustomViewModel new];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
     [self presentViewController:navigationController animated:true completion:nil];
 }

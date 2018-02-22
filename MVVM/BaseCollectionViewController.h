@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <IGListKit/IGListKit.h>
 #import "BaseViewModel.h"
+#import "MVVMViewController.h"
 #import <KVOController/KVOController.h>
 
-@interface BaseCollectionViewController<__covariant ViewModelType: BaseViewModel *> : UIViewController
 
-@property (nonatomic, strong, readonly) ViewModelType viewModel;
+@interface BaseCollectionViewController<__covariant ViewModelType: BaseViewModel *> : UIViewController<MVVMViewController>
+
+@property (nonatomic, strong) ViewModelType viewModel;
 
 @property (nonatomic, strong, readonly) UICollectionView *collectionView;
 
